@@ -1,5 +1,58 @@
 // src/home.jsx — Homepage
 
+function LangInterstitial() {
+  const row1 = ['Bonjour','مرحبا','你好','こんにちは','Hola','שלום','Здравствуйте','नमस्ते','Olá','Merhaba'];
+  const row2 = ['ਸਤ ਸ੍ਰੀ ਅਕਾਲ','Halò','Γεια σας','Salam','Habari','Сайн байна уу','Selamat','Xin chào','안녕하세요','வணக்கம்'];
+  const words1 = [...row1, ...row1];
+  const words2 = [...row2, ...row2];
+  const wordStyle = (italic) => ({
+    fontFamily: 'Fraunces, serif',
+    fontSize: 'clamp(3.5rem, 7vw, 7rem)',
+    fontWeight: 300,
+    fontVariationSettings: "'SOFT' 100, 'opsz' 144",
+    letterSpacing: '-0.02em',
+    color: '#F5F1EA',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
+    fontStyle: italic ? 'italic' : 'normal',
+  });
+  return (
+    <section style={{ background:'#1A1815', overflow:'hidden', padding:'96px 0', position:'relative' }}>
+      {/* Eyebrow labels */}
+      <div style={{ position:'absolute', top:24, left:40, fontFamily:"'JetBrains Mono',monospace", fontSize:11, letterSpacing:'0.08em', textTransform:'uppercase', color:'rgba(245,241,234,0.4)', zIndex:20 }}>04 — 100+ languages</div>
+      <div style={{ position:'absolute', top:24, right:40, fontFamily:"'JetBrains Mono',monospace", fontSize:11, letterSpacing:'0.08em', textTransform:'uppercase', color:'rgba(245,241,234,0.4)', zIndex:20 }}>Interstitial</div>
+
+      {/* Top fade */}
+      <div style={{ position:'absolute', top:0, left:0, right:0, height:96, background:'linear-gradient(to bottom, #1A1815, transparent)', zIndex:10, pointerEvents:'none' }} />
+
+      {/* Row 1 — scrolls left */}
+      <div style={{ overflow:'hidden', marginBottom:32 }}>
+        <div style={{ display:'flex', gap:64, animation:'langScroll 60s linear infinite', willChange:'transform' }}>
+          {words1.map((w, i) => <span key={i} style={wordStyle(false)}>{w}</span>)}
+        </div>
+      </div>
+
+      {/* Row 2 — scrolls right, dimmer, italic */}
+      <div style={{ overflow:'hidden' }}>
+        <div style={{ display:'flex', gap:64, animation:'langScroll 70s linear infinite reverse', willChange:'transform', opacity:0.4 }}>
+          {words2.map((w, i) => <span key={i} style={wordStyle(true)}>{w}</span>)}
+        </div>
+      </div>
+
+      {/* Bottom fade */}
+      <div style={{ position:'absolute', bottom:0, left:0, right:0, height:96, background:'linear-gradient(to top, #1A1815, transparent)', zIndex:10, pointerEvents:'none' }} />
+
+      {/* Center overlay badge */}
+      <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', zIndex:20, pointerEvents:'none' }}>
+        <div style={{ background:'rgba(26,24,21,0.8)', backdropFilter:'blur(8px)', WebkitBackdropFilter:'blur(8px)', border:'1px solid rgba(245,241,234,0.1)', padding:'24px 48px', borderRadius:999, textAlign:'center' }}>
+          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:11, letterSpacing:'0.3em', textTransform:'uppercase', color:'#C8541C', marginBottom:6 }}>One hundred</div>
+          <div style={{ fontFamily:'Fraunces', fontStyle:'italic', fontWeight:300, fontVariationSettings:"'SOFT' 100", fontSize:'clamp(1.5rem, 3vw, 2.25rem)', color:'#F5F1EA', lineHeight:1.2 }}>and counting.</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function VHome() {
   const [heroActive, setHeroActive] = React.useState(false);
 
@@ -43,6 +96,27 @@ function VHome() {
                   <div style={{ marginTop: 3, fontSize: 12, color:'rgba(255,255,255,0.45)' }}>{b}</div>
                 </div>
               ))}
+            </div>
+
+            {/* Slot 01 — PM portrait below stats */}
+            {/* TODO: Replace with <Image src="/team/steffi.jpg" /> when photography is delivered */}
+            <div style={{ display:'flex', alignItems:'center', gap:16, marginTop:36, paddingTop:24, borderTop:'1px solid rgba(255,255,255,0.08)' }}
+              aria-label="Placeholder: portrait of Steffi K., Senior Project Manager">
+              <ImagePlaceholder
+                treatment="ink"
+                aspect="1:1"
+                number="01"
+                centerIcon="camera"
+                centerLabel="portrait"
+                ariaLabel="Placeholder: portrait of Steffi K., Senior Project Manager"
+                style={{ width:56, flexShrink:0, borderRadius:999 }}
+              />
+              <div>
+                <div style={{ fontSize:12, fontWeight:500, color:'rgba(255,255,255,0.9)', lineHeight:1.3 }}>Steffi K.</div>
+                <div style={{ fontFamily:"'JetBrains Mono', monospace", fontSize:10, letterSpacing:'0.05em', color:'rgba(255,255,255,0.45)', marginTop:3 }}>
+                  Senior Project Manager / Legal &amp; immigration translation · 8 years
+                </div>
+              </div>
             </div>
           </div>
 
@@ -148,6 +222,70 @@ function VHome() {
         </div>
       </section>
 
+      {/* ── Slot 02: Editorial break ──────────────────────── */}
+      {/* TODO: Replace with <Image src="/photos/translator-at-work.jpg" /> when photography is delivered */}
+      <section style={{ padding:'0 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
+        <div style={{ maxWidth:1200, margin:'0 auto', paddingBottom:56 }}>
+          <Reveal>
+            <ImagePlaceholder
+              treatment="paper"
+              aspect="21:9"
+              label="PHOTO — translator at work, hands on document, warm natural light"
+              number="02"
+              centerIcon="image"
+              centerLabel="editorial"
+              ariaLabel="Placeholder: editorial — translator at work, hands on document, warm natural light"
+              style={{ border:'1px solid rgba(26,24,21,0.1)', borderRadius:12 }}
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── Language interstitial ─────────────────────────── */}
+      <LangInterstitial />
+
+      {/* ── Team ─────────────────────────────────────────── */}
+      <section style={{ padding:'96px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
+        <div style={{ maxWidth:1200, margin:'0 auto' }}>
+          <Reveal>
+            <div className="v-mono" style={{ fontSize:11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom:18 }}>05 · Our people</div>
+            <div className="v-g-2col" style={{ marginBottom:56 }}>
+              <h2 className="v-serif" style={{ fontSize:38, lineHeight:1.1, letterSpacing:'-0.02em', margin:0, fontWeight:400 }}>The people behind the work.</h2>
+              <p style={{ fontSize:15.5, color:'var(--mute)', lineHeight:1.65, margin:0 }}>Named project managers, not tickets. Every client has a person to call.</p>
+            </div>
+          </Reveal>
+          <div className="v-g-4col">
+            {[
+              { initials:'SK', name:'Steffi K.',  role:'Senior Project Manager', domain:'Legal & immigration',     years:8, langs:'EN · ES · FR' },
+              { initials:'JL', name:'Jessica L.', role:'Senior Project Manager', domain:'Media & captioning',     years:6, langs:'EN · FR · IT' },
+              { initials:'RM', name:'Rahul M.',   role:'Project Manager',        domain:'Technical & localization',years:5, langs:'EN · HI · TA' },
+              { initials:'AO', name:'Anika O.',   role:'Project Manager',        domain:'Medical & life sciences',years:7, langs:'EN · DE · NL' },
+            ].map((m, i) => (
+              <Reveal key={m.name} delay={i * 60}>
+                {/* TODO: Replace with <Image src={`/team/${m.initials.toLowerCase()}.jpg`} /> when photography is delivered */}
+                <div>
+                  <ImagePlaceholder
+                    treatment="ink"
+                    aspect="4:5"
+                    label="PHOTO"
+                    number={`0${i + 1}`}
+                    initials={m.initials}
+                    ariaLabel={`Placeholder: portrait of ${m.name}, ${m.role}`}
+                    style={{ borderRadius:4 }}
+                  />
+                  <div style={{ paddingTop:16 }}>
+                    <div style={{ fontSize:14.5, fontWeight:500 }}>{m.name}</div>
+                    <div style={{ fontSize:13, color:'var(--mute)', marginTop:2 }}>{m.role}</div>
+                    <div style={{ fontSize:12, color:'var(--mute)', marginTop:4 }}>{m.domain} · {m.years} yrs</div>
+                    <div className="v-mono" style={{ fontSize:10, color:'rgba(10,10,10,0.4)', marginTop:6, letterSpacing:'0.04em' }}>{m.langs}</div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── How it works ──────────────────────────────────── */}
       <section style={{ padding:'96px 40px', background:'var(--paper)', borderBottom:'1px solid var(--line)' }}>
         <div style={{ maxWidth: 1200, margin:'0 auto' }}>
@@ -157,7 +295,21 @@ function VHome() {
                 <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 14 }}>02 · How it works</div>
                 <h2 className="v-serif" style={{ fontSize: 38, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>From upload to delivery.</h2>
               </div>
-              <a href="#" style={{ color:'var(--ink)', fontSize: 14, textDecoration:'none', borderBottom:'1px solid var(--line)', paddingBottom: 2 }}>Read the full workflow →</a>
+              <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-end', gap:16 }}>
+                <a href="#" style={{ color:'var(--ink)', fontSize: 14, textDecoration:'none', borderBottom:'1px solid var(--line)', paddingBottom: 2 }}>Read the full workflow →</a>
+                {/* Slot 03 — atmospheric process detail */}
+                {/* TODO: Replace with <Image src="/photos/process-hand.jpg" /> when photography is delivered */}
+                <ImagePlaceholder
+                  treatment="warm"
+                  aspect="4:3"
+                  label="PHOTO — hand over document, moody light"
+                  number="03"
+                  centerIcon="camera"
+                  centerLabel="Atmospheric"
+                  ariaLabel="Placeholder: atmospheric detail, hand over document, moody light"
+                  style={{ width:220, border:'1px solid rgba(245,241,234,0.1)', borderRadius:8 }}
+                />
+              </div>
             </div>
           </Reveal>
           <div className="v-g-3col">
@@ -212,8 +364,14 @@ function VHome() {
                     {t.quote}
                   </blockquote>
                   <div style={{ display:'flex', alignItems:'center', gap: 12 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 999, background:'var(--warm)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink: 0 }}>
-                      <span className="v-serif" style={{ fontSize: 13 }}>{t.initials}</span>
+                    {/* TODO: Replace with <Image src={`/avatars/${t.initials.toLowerCase()}.jpg`} /> */}
+                    <div
+                      className="placeholder-ink"
+                      role="img"
+                      aria-label={`Placeholder: portrait of ${t.name}`}
+                      style={{ width:40, height:40, borderRadius:999, flexShrink:0, position:'relative', overflow:'hidden', display:'flex', alignItems:'center', justifyContent:'center' }}
+                    >
+                      <span style={{ fontFamily:'Fraunces', fontSize:13, fontWeight:300, fontVariationSettings:"'SOFT' 100", color:'rgba(245,241,234,0.8)', position:'relative', zIndex:1 }}>{t.initials}</span>
                     </div>
                     <div>
                       <div style={{ fontSize: 13.5, fontWeight: 500 }}>{t.name}</div>
