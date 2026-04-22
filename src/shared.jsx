@@ -32,6 +32,7 @@ const VLogo = ({ color = 'var(--ink)', size = 18 }) => (
 const VNav = ({ active }) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const items = [
+    { label: 'Home',        page: 'home' },
     { label: 'Services',    page: 'service' },
     { label: 'Industries',  page: 'industries' },
     { label: 'Pricing',     page: 'quote' },
