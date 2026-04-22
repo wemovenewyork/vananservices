@@ -40,7 +40,7 @@ function VEnterprise() {
         </div>
       </section>
 
-      <VProof />
+      <VProof compact={true} />
 
       {/* Features */}
       <section style={{ padding:'96px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>

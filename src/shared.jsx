@@ -72,16 +72,26 @@ const VNav = ({ active }) => {
               borderRadius: 6, fontSize: 13.5, fontWeight: 500, cursor:'pointer',
               letterSpacing:'-0.005em',
             }}
-          >Get a quote →</button>
+          >Instant quote →</button>
         </div>
-        {/* Hamburger */}
-        <button className="v-nav-burger" onClick={() => setMobileOpen(true)} aria-label="Open menu">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <rect x="2" y="5" width="18" height="1.5" fill="var(--ink)" rx="1"/>
-            <rect x="2" y="10.25" width="18" height="1.5" fill="var(--ink)" rx="1"/>
-            <rect x="2" y="15.5" width="18" height="1.5" fill="var(--ink)" rx="1"/>
-          </svg>
-        </button>
+        {/* Mobile: CTA pill + hamburger */}
+        <div className="v-nav-mobile-actions" style={{ alignItems:'center', gap: 10 }}>
+          <button
+            onClick={() => window.navigate('quote')}
+            style={{
+              background:'var(--brand)', color:'#fff', border:0, padding:'8px 14px',
+              borderRadius: 6, fontSize: 13, fontWeight: 500, cursor:'pointer',
+              letterSpacing:'-0.005em', whiteSpace:'nowrap',
+            }}
+          >Instant quote →</button>
+          <button className="v-nav-burger" onClick={() => setMobileOpen(true)} aria-label="Open menu" style={{ background:'transparent', border:0, padding: 4, cursor:'pointer' }}>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="2" y="5" width="18" height="1.5" fill="var(--ink)" rx="1"/>
+              <rect x="2" y="10.25" width="18" height="1.5" fill="var(--ink)" rx="1"/>
+              <rect x="2" y="15.5" width="18" height="1.5" fill="var(--ink)" rx="1"/>
+            </svg>
+          </button>
+        </div>
       </header>
 
       {/* Mobile drawer */}
@@ -99,7 +109,7 @@ const VNav = ({ active }) => {
         <div style={{ marginTop: 24 }}>
           <button onClick={() => { window.navigate('quote'); setMobileOpen(false); }}
             style={{ background:'var(--brand)', color:'#fff', border:0, padding:'14px 24px', borderRadius:6, fontSize:15, fontWeight:500, cursor:'pointer', width:'100%' }}>
-            Get a quote →
+            Get an instant quote →
           </button>
         </div>
       </div>
@@ -107,45 +117,96 @@ const VNav = ({ active }) => {
   );
 };
 
-const VProof = ({ compact = false }) => (
-  <div style={{ padding: compact ? '28px 40px' : '40px 40px', borderBottom:'1px solid var(--line)', background:'var(--paper)' }}>
-    <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap: 24 }}>
-      <div style={{ display:'flex', alignItems:'center', gap: 14 }}>
-        <div style={{ display:'flex', gap: 2 }}>
-          {[0,1,2,3,4].map(i => (
-            <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill="#00B67A" aria-hidden="true">
-              <rect width="24" height="24" fill="#00B67A"/>
-              <path d="M12 4.5l2.1 4.8 5.2.5-3.9 3.5 1.2 5.1L12 15.7 7.4 18.4l1.2-5.1L4.7 9.8l5.2-.5L12 4.5z" fill="#fff"/>
-            </svg>
+const VProof = ({ compact = false }) => {
+  if (compact) {
+    return (
+      <div style={{ padding: '28px 40px', borderBottom:'1px solid var(--line)', background:'var(--paper)' }}>
+        <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap: 24 }}>
+          <div style={{ display:'flex', alignItems:'center', gap: 14, flexWrap:'wrap' }}>
+            <div style={{ display:'flex', gap: 2 }}>
+              {[0,1,2,3,4].map(i => (
+                <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill="#00B67A" aria-hidden="true">
+                  <rect width="24" height="24" fill="#00B67A"/>
+                  <path d="M12 4.5l2.1 4.8 5.2.5-3.9 3.5 1.2 5.1L12 15.7 7.4 18.4l1.2-5.1L4.7 9.8l5.2-.5L12 4.5z" fill="#fff"/>
+                </svg>
+              ))}
+            </div>
+            <div style={{ fontSize: 13.5, color:'var(--ink)' }}>
+              <strong style={{ fontWeight: 600 }}>4.9</strong>
+              <span style={{ color:'var(--mute)' }}> · 2,100+ reviews</span>
+            </div>
+            <span style={{ color:'var(--line)', fontSize: 18 }}>|</span>
+            {[
+              { label:'ISO 9001:2015' },
+              { label:'SOC 2 Type II' },
+              { label:'HIPAA-ready' },
+            ].map(b => (
+              <span key={b.label} className="v-mono" style={{
+                fontSize: 10, letterSpacing:'0.06em', padding:'4px 8px',
+                background:'rgba(11,30,63,0.12)', color:'var(--brand)', borderRadius: 3,
+              }}>{b.label}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <section style={{ padding: '72px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
+      <div style={{ maxWidth: 1200, margin:'0 auto' }}>
+        <div style={{ textAlign:'center', marginBottom: 44 }}>
+          <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.1em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 14 }}>
+            Trusted where translation accuracy is legally binding
+          </div>
+          <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap: 16, flexWrap:'wrap' }}>
+            <div style={{ display:'flex', gap: 2 }}>
+              {[0,1,2,3,4].map(i => (
+                <svg key={i} width="22" height="22" viewBox="0 0 24 24" fill="#00B67A" aria-hidden="true">
+                  <rect width="24" height="24" fill="#00B67A"/>
+                  <path d="M12 4.5l2.1 4.8 5.2.5-3.9 3.5 1.2 5.1L12 15.7 7.4 18.4l1.2-5.1L4.7 9.8l5.2-.5L12 4.5z" fill="#fff"/>
+                </svg>
+              ))}
+            </div>
+            <div style={{ fontSize: 15, color:'var(--ink)' }}>
+              <strong style={{ fontWeight: 600 }}>4.9</strong>
+              <span style={{ color:'var(--mute)' }}> · 2,100+ verified Trustpilot reviews</span>
+            </div>
+          </div>
+        </div>
+
+        <div style={{
+          display:'flex', alignItems:'center', justifyContent:'space-between',
+          flexWrap:'wrap', gap: 40, marginBottom: 44,
+        }}>
+          {['Cravath','Fenwick','Penguin RH','Pearson','Greenberg T.','WPP'].map(name => (
+            <span key={name} className="v-serif" style={{
+              fontSize: 19, color:'rgba(10,10,10,0.72)', letterSpacing:'-0.005em', fontWeight: 500,
+            }}>{name}</span>
           ))}
         </div>
-        <div style={{ fontSize: 13.5, color:'var(--ink)' }}>
-          <strong style={{ fontWeight: 600 }}>4.9</strong>
-          <span style={{ color:'var(--mute)' }}> · 2,100+ reviews</span>
+
+        <div style={{
+          display:'flex', alignItems:'center', justifyContent:'center', gap: 14,
+          paddingTop: 36, borderTop:'1px solid var(--line)', flexWrap:'wrap',
+        }}>
+          {[
+            { label:'ISO 9001:2015' },
+            { label:'SOC 2 Type II' },
+            { label:'HIPAA-ready' },
+            { label:'ATA Member' },
+            { label:'BBB A+ Accredited' },
+          ].map(b => (
+            <span key={b.label} className="v-mono" style={{
+              fontSize: 11, letterSpacing:'0.08em', padding:'6px 12px',
+              background:'rgba(11,30,63,0.08)', color:'var(--brand)', borderRadius: 4,
+            }}>{b.label}</span>
+          ))}
         </div>
-        <span style={{ color:'var(--line)', fontSize: 18 }}>|</span>
-        {/* Trust badges */}
-        {[
-          { label:'ISO 9001:2015', color:'rgba(11,30,63,0.12)', text:'var(--brand)' },
-          { label:'SOC 2 Type II', color:'rgba(11,30,63,0.12)', text:'var(--brand)' },
-          { label:'HIPAA-ready',   color:'rgba(11,30,63,0.12)', text:'var(--brand)' },
-        ].map(b => (
-          <span key={b.label} className="v-mono" style={{
-            fontSize: 10, letterSpacing:'0.06em', padding:'4px 8px',
-            background: b.color, color: b.text, borderRadius: 3,
-          }}>{b.label}</span>
-        ))}
       </div>
-      <div style={{ display:'flex', alignItems:'center', gap: 32, flexWrap:'wrap' }}>
-        {['Cravath','Fenwick','Penguin RH','Pearson','Greenberg T.','WPP'].map(name => (
-          <span key={name} className="v-serif" style={{
-            fontSize: 15, color:'rgba(10,10,10,0.42)', letterSpacing:'-0.005em', fontWeight: 500,
-          }}>{name}</span>
-        ))}
-      </div>
-    </div>
-  </div>
-);
+    </section>
+  );
+};
 
 const VFooter = () => (
   <footer style={{ padding:'56px 40px 32px', background:'var(--ink)', color:'rgba(255,255,255,0.7)' }}>

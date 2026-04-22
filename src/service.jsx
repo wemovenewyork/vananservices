@@ -310,7 +310,7 @@ function VService({ service = 'translation' }) {
         </div>
       </section>
 
-      <VProof />
+      <VProof compact={true} />
 
       {/* What you receive */}
       <section style={{ padding:'96px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>

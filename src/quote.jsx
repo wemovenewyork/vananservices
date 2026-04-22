@@ -158,6 +158,22 @@ function VQuote() {
                     desc="Mailed next business day. +$19.95 flat." />
                 )}
               </div>
+              <div style={{
+                marginTop: 28, padding: 16,
+                background:'var(--warm)', borderRadius: 4,
+                fontSize: 13, color:'rgba(10,10,10,0.75)', lineHeight: 1.55,
+                display:'flex', gap: 12
+              }}>
+                <div style={{
+                  width: 24, height: 24, flexShrink: 0, borderRadius: 999,
+                  border:'1.5px solid var(--brand)', color:'var(--brand)',
+                  display:'flex', alignItems:'center', justifyContent:'center',
+                  fontSize: 12, fontFamily:'Source Serif 4'
+                }}>V</div>
+                <div>
+                  <strong style={{ fontWeight: 500 }}>Your likely translator:</strong> For {fromLang} → {toLang} {service === 'certified' ? 'certified civil documents' : selSvc.name.toLowerCase()}, your project will be matched with a specialist like Alexis Ortega (ATA-certified, 9 years, Latin American civil documents) or equivalent.
+                </div>
+              </div>
             </div>
           )}
 
@@ -258,7 +274,7 @@ function VQuote() {
               </div>
               <div style={{ marginTop: 28, padding: 16, background:'var(--warm)', borderRadius: 4, fontSize: 13, color:'rgba(10,10,10,0.75)', lineHeight: 1.55, display:'flex', gap: 12 }}>
                 <div style={{ width: 24, height: 24, flexShrink: 0, borderRadius: 999, border:'1.5px solid var(--brand)', color:'var(--brand)', display:'flex', alignItems:'center', justifyContent:'center', fontSize: 12, fontFamily:'Source Serif 4' }}>V</div>
-                <div>Alexis Ortega (ATA-certified, 9 years, specializes in Latin American civil documents) is available to start this translation. If you pay in the next 30 minutes, she begins today.</div>
+                <div>Alexis Ortega (ATA-certified, 9 years, specializes in Latin American civil documents) is available to start this translation. Pay today and she starts on your document this afternoon.</div>
               </div>
             </div>
           )}

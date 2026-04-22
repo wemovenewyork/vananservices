@@ -22,15 +22,14 @@ function VHome() {
               USCIS, courts, universities, publishers. Quote in 15 minutes. Delivery in 24 hours. Every document reviewed by a certified human linguist.
             </p>
             <div style={{ display:'flex', gap: 12, marginTop: 40, flexWrap:'wrap' }}>
-              <VBtn onClick={() => window.navigate('quote')} style={{ background:'#fff', color:'var(--brand)' }}>Get a quote in 15 minutes →</VBtn>
+              <VBtn onClick={() => window.navigate('quote')} style={{ background:'#fff', color:'var(--brand)' }}>Get an instant quote →</VBtn>
               <VBtn onClick={() => window.navigate('enterprise')} variant="ghost" style={{ color:'#fff', borderColor:'rgba(255,255,255,0.28)' }}>Talk to an enterprise lead</VBtn>
             </div>
             <div style={{ display:'flex', gap: 36, marginTop: 48, paddingTop: 36, borderTop:'1px solid rgba(255,255,255,0.1)', flexWrap:'wrap' }}>
               {[
-                ['56,000+','Projects delivered'],
-                ['100+','Languages'],
-                ['28,700+','Satisfied clients'],
-                ['ISO 9001:2015','Certified quality'],
+                ['4.9 / 5','Trustpilot · 2,100+ reviews'],
+                ['56,000+','Projects delivered since 2013'],
+                ['24 hours','Standard turnaround'],
               ].map(([a,b]) => (
                 <div key={a}>
                   <div style={{ color:'#fff', fontWeight: 600, fontSize: 15 }}>{a}</div>
@@ -152,9 +151,9 @@ function VHome() {
           </Reveal>
           <div className="v-g-3col">
             {[
-              ['Upload','Drop your document or audio file. Our system detects language, page count, and formatting complexity in seconds.','Typical: 30 seconds'],
-              ['Quote & approve','Firm price. No estimates, no scope creep. Pay by card, invoice, or PO.','Typical: 2 minutes'],
-              ['Delivery','A named linguist + reviewer deliver a PDF, editable file, and certificate of accuracy to your inbox.','Typical: 24 hours'],
+              ['Upload','Drop a document, audio, or video file. We auto-detect language, page count, and complexity — no sales call required.','Typical: 30 seconds'],
+              ['Quote & approve','Firm price to the penny. Pay by card, ACH, PO, or net-30 invoice for enterprise accounts.','Typical: 90 seconds to firm quote'],
+              ['Delivery','A named linguist plus an independent reviewer deliver a PDF, editable source, and signed Certificate of Accuracy.','Typical: 24 hours · Same-day available'],
             ].map(([step, desc, time], i) => (
               <Reveal key={step} delay={i * 100}>
                 <div className="v-card-lift" style={{ padding: 32, border:'1px solid var(--line)', background:'#fff' }}>
@@ -190,10 +189,10 @@ function VHome() {
                 initials: 'DC',
               },
               {
-                quote: '"Very good professional service with excellent turnaround. Very affordable. An excellent service with great online support — very easy to get in touch, very responsive."',
-                name: 'Verified client',
-                role: 'From 2,100+ customer reviews',
-                initials: 'V',
+                quote: '"We dubbed a six-episode docuseries into three languages on a ten-day deadline. Vanan matched us with three voice directors, handled the language QC, and delivered clean masters a day ahead of schedule."',
+                name: 'Priya Raman',
+                role: 'Post Production Supervisor — Mandalay Pictures',
+                initials: 'PR',
               },
             ].map((t, i) => (
               <Reveal key={t.name} delay={i * 80}>
@@ -222,8 +221,8 @@ function VHome() {
         <Reveal style={{ maxWidth: 1200, margin:'0 auto' }}>
           <div className="v-g-2col" style={{ border:'1px solid var(--line)', background:'#fff' }}>
             {[
-              { tag:'For individuals', title:'One document, a week from your interview.', desc:'Certified translations accepted by USCIS, universities, and courts. Upload once. Get a firm price. A notarized PDF lands in your inbox within 24 hours.', cta:'Start a certified translation', variant:'primary', page:'quote' },
-              { tag:'For enterprise',  title:'One contract. Every language. Every format.', desc:'MSA, PO-based billing, dedicated PM, secure SFTP / API. SOC 2 Type II, ISO 9001:2015, and HIPAA-ready workflows.', cta:'Talk to an enterprise lead', variant:'ink', page:'enterprise' },
+              { tag:'For individuals', title:'One document, a week from your interview.', desc:'A birth certificate a week before your interview. A transcript for your I-485. Certified, notarized, signed by an ATA translator — upload now, PDF in your inbox by tomorrow.', cta:'Start a certified translation', variant:'primary', page:'quote' },
+              { tag:'For enterprise',  title:'One contract. Every language. Every format.', desc:'One MSA for every language you ship in. Dedicated PM, API or SFTP integration, PO and net-30 billing. SOC 2 Type II, ISO 9001:2015, HIPAA-ready.', cta:'Talk to an enterprise lead', variant:'ink', page:'enterprise' },
             ].map((c, i) => (
               <div key={c.tag} style={{ padding: 40, borderRight: i === 0 ? '1px solid var(--line)' : 0 }}>
                 <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--brand)' }}>{c.tag}</div>
@@ -241,10 +240,10 @@ function VHome() {
         <Reveal style={{ maxWidth: 880, margin:'0 auto' }}>
           <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'rgba(255,255,255,0.5)', marginBottom: 24 }}>Start a project</div>
           <h2 className="v-serif" style={{ fontSize: 64, lineHeight: 1.05, letterSpacing:'-0.025em', margin: 0, fontWeight: 400, color:'#fff' }}>
-            Upload your document.<br/>Get a firm price in 15 minutes.
+            Upload your document.<br/>A real linguist starts today.
           </h2>
           <div style={{ display:'flex', gap: 12, marginTop: 40, flexWrap:'wrap' }}>
-            <VBtn onClick={() => window.navigate('quote')} style={{ background:'#fff', color:'var(--ink)' }}>Get a quote →</VBtn>
+            <VBtn onClick={() => window.navigate('quote')} style={{ background:'#fff', color:'var(--ink)' }}>Get an instant quote →</VBtn>
             <VBtn onClick={() => window.navigate('enterprise')} variant="ghost" style={{ color:'#fff', borderColor:'rgba(255,255,255,0.25)' }}>Book a 20-min call</VBtn>
           </div>
         </Reveal>
