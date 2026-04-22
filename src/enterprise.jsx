@@ -9,7 +9,7 @@ function VEnterprise() {
       <section style={{ padding:'72px 40px 64px', borderBottom:'1px solid var(--line)' }}>
         <div style={{ maxWidth: 1200, margin:'0 auto' }}>
           <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 24 }}>Enterprise</div>
-          <div style={{ display:'grid', gridTemplateColumns:'1.2fr 1fr', gap: 72, alignItems:'end' }}>
+          <Reveal><div style={{ display:'grid', gridTemplateColumns:'1.2fr 1fr', gap: 72, alignItems:'end' }}>
             <div>
               <h1 className="v-serif" style={{ fontSize: 58, lineHeight: 1.05, letterSpacing:'-0.025em', margin: 0, fontWeight: 400 }}>
                 One contract.<br/>Every language.<br/>Every format.
@@ -36,7 +36,7 @@ function VEnterprise() {
                 </div>
               ))}
             </div>
-          </div>
+          </div></Reveal>
         </div>
       </section>
 
@@ -63,11 +63,13 @@ function VEnterprise() {
                 ['Non-disclosure agreements', 'Project-level and master NDAs available. We routinely work under court-filed protective orders and investment-grade confidentiality requirements.'],
                 ['Rush & super-rush delivery', 'Same-day delivery for most document types. 6-hour turnaround available with advance notice. Dedicated capacity for standing accounts.'],
                 ['Volume pricing', 'Tiered rates that scale with your monthly volume. Committed spend agreements available for predictable budgeting.'],
-              ].map(([title, desc]) => (
-                <div key={title} style={{ padding: 28, background:'var(--paper)', border:'1px solid var(--line)' }}>
-                  <div className="v-serif" style={{ fontSize: 19, letterSpacing:'-0.01em', marginBottom: 10 }}>{title}</div>
-                  <div style={{ fontSize: 13.5, color:'var(--mute)', lineHeight: 1.6 }}>{desc}</div>
-                </div>
+              ].map(([title, desc], i) => (
+                <Reveal key={title} delay={i * 40}>
+                  <div className="v-card-lift" style={{ padding: 28, background:'var(--paper)', border:'1px solid var(--line)' }}>
+                    <div className="v-serif" style={{ fontSize: 19, letterSpacing:'-0.01em', marginBottom: 10 }}>{title}</div>
+                    <div style={{ fontSize: 13.5, color:'var(--mute)', lineHeight: 1.6 }}>{desc}</div>
+                  </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -104,7 +106,7 @@ function VEnterprise() {
 
       {/* Testimonial */}
       <section style={{ padding:'96px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
-        <div style={{ maxWidth: 920, margin:'0 auto' }}>
+        <Reveal style={{ maxWidth: 920, margin:'0 auto' }}>
           <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 24 }}>03 · What clients say</div>
           <blockquote className="v-serif" style={{ fontSize: 38, lineHeight: 1.25, letterSpacing:'-0.015em', margin: 0, fontWeight: 400, color:'var(--ink)' }}>
             "Very good professional service with excellent turnaround. Very affordable as well. An excellent service with great online support — very easy to get in touch, very responsive."
@@ -118,7 +120,7 @@ function VEnterprise() {
               <div style={{ fontSize: 13, color:'var(--mute)' }}>From 2,100+ customer reviews</div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Contact form CTA */}

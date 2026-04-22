@@ -88,7 +88,7 @@ function VIndustries() {
       {/* Industry cards */}
       {industries.map((ind, i) => (
         <section key={ind.id} style={{ padding:'80px 40px', borderBottom:'1px solid var(--line)', background: i % 2 === 0 ? '#fff' : 'var(--paper)' }}>
-          <div style={{ display:'grid', gridTemplateColumns:'280px 1fr 1fr', gap: 64, maxWidth: 1200, margin:'0 auto', alignItems:'start' }}>
+          <Reveal><div style={{ display:'grid', gridTemplateColumns:'280px 1fr 1fr', gap: 64, maxWidth: 1200, margin:'0 auto', alignItems:'start' }}>
 
             {/* Label */}
             <div>
@@ -106,7 +106,7 @@ function VIndustries() {
               <div className="v-mono" style={{ fontSize: 10, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 16 }}>Services we provide</div>
               <div style={{ display:'flex', flexDirection:'column', gap: 0 }}>
                 {ind.services.map(s => (
-                  <a key={s} href="#" onClick={e => { e.preventDefault(); window.navigate('service'); }} style={{
+                  <a key={s} href="#" className="v-ind-service" onClick={e => { e.preventDefault(); window.navigate('service'); }} style={{
                     display:'flex', justifyContent:'space-between', alignItems:'center',
                     padding:'14px 0', borderBottom:'1px solid var(--line)',
                     textDecoration:'none', color:'var(--ink)', fontSize: 15,
@@ -133,7 +133,7 @@ function VIndustries() {
                 <VBtn onClick={() => window.navigate('quote')}>Get a quote →</VBtn>
               </div>
             </div>
-          </div>
+          </div></Reveal>
         </section>
       ))}
 

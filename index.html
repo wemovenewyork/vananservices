@@ -51,6 +51,38 @@
   input, textarea, select { font-family: inherit; }
 
   details summary::-webkit-details-marker { display: none; }
+
+  /* ── Scroll reveal ───────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+                transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ── Button hover ────────────────────────────────────────── */
+  .v-btn { transition: transform 0.12s, filter 0.12s !important; }
+  .v-btn:hover  { transform: translateY(-1px); filter: brightness(0.88); }
+  .v-btn:active { transform: translateY(0px);  filter: brightness(0.78); }
+
+  /* ── Service row hover ───────────────────────────────────── */
+  .v-svc-row { transition: background 0.14s, padding-left 0.14s; }
+  .v-svc-row:hover { background: rgba(10,10,10,0.03) !important; padding-left: 6px; }
+  .v-svc-row:hover .v-svc-arrow { transform: translateX(5px); color: var(--ink) !important; }
+  .v-svc-arrow { transition: transform 0.14s, color 0.14s; display: inline-block; }
+
+  /* ── Card hover ──────────────────────────────────────────── */
+  .v-card-lift { transition: box-shadow 0.18s, transform 0.18s; }
+  .v-card-lift:hover { box-shadow: 0 12px 40px rgba(10,10,10,0.12) !important; transform: translateY(-3px); }
+
+  /* ── Nav link hover ──────────────────────────────────────── */
+  .v-nav-link { transition: color 0.14s, opacity 0.14s; }
+  .v-nav-link:hover { opacity: 1 !important; color: var(--ink) !important; }
+
+  /* ── Industry / resource card hover ─────────────────────── */
+  .v-ind-service:hover { background: rgba(10,10,10,0.025) !important; }
+  .v-ind-service { transition: background 0.13s; }
 </style>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>

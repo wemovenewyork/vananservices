@@ -1,4 +1,21 @@
-// src/shared.jsx — logo, nav, footer, proof row, small UI primitives
+// src/shared.jsx — logo, nav, footer, proof row, small UI primitives, Reveal
+
+function Reveal({ children, delay = 0, style = {}, className = '' }) {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => el.classList.add('is-visible'), delay);
+        obs.disconnect();
+      }
+    }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [delay]);
+  return <div ref={ref} className={`reveal ${className}`} style={style}>{children}</div>;
+}
 
 const VLogo = ({ color = 'var(--ink)', size = 18 }) => (
   <div
@@ -32,6 +49,7 @@ const VNav = ({ active }) => {
           <a
             key={it.label}
             href="#"
+            className="v-nav-link"
             onClick={e => { e.preventDefault(); if (it.page) window.navigate(it.page); }}
             style={{
               textDecoration:'none',
@@ -155,7 +173,7 @@ const VBtn = ({ children, variant = 'primary', onClick, style = {}, ...rest }) =
     ink:     { background:'var(--ink)', color:'#fff' },
   };
   return (
-    <button {...rest} onClick={onClick} style={{ ...base, ...variants[variant], ...style }}>
+    <button {...rest} className="v-btn" onClick={onClick} style={{ ...base, ...variants[variant], ...style }}>
       {children}
     </button>
   );
@@ -167,4 +185,4 @@ const VLive = ({ children }) => (
   </span>
 );
 
-Object.assign(window, { VLogo, VNav, VProof, VFooter, VBtn, VLive });
+Object.assign(window, { VLogo, VNav, VProof, VFooter, VBtn, VLive, Reveal });

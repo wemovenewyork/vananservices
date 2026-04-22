@@ -84,7 +84,7 @@ function VResources() {
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 2 }}>
             {guides.map((g, i) => (
-              <a key={i} href="#" style={{ display:'block', padding: 32, border:'1px solid var(--line)', textDecoration:'none', color:'inherit', background:'var(--paper)', transition:'background .12s' }}
+              <Reveal key={i} delay={i * 60}><a href="#" style={{ display:'block', padding: 32, border:'1px solid var(--line)', textDecoration:'none', color:'inherit', background:'var(--paper)', transition:'background .12s' }}
                 onMouseEnter={e => e.currentTarget.style.background = '#fff'}
                 onMouseLeave={e => e.currentTarget.style.background = 'var(--paper)'}
               >
@@ -98,7 +98,7 @@ function VResources() {
                   <span className="v-mono" style={{ fontSize: 10, color:'var(--mute)', letterSpacing:'0.04em' }}>{g.readTime}</span>
                   <span style={{ color:'var(--mute)', fontSize: 16 }}>→</span>
                 </div>
-              </a>
+              </a></Reveal>
             ))}
           </div>
         </div>
@@ -132,7 +132,7 @@ function VResources() {
       <section style={{ padding:'64px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
         <div style={{ maxWidth: 1200, margin:'0 auto' }}>
           <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 40 }}>03 · Glossary</div>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 32 }}>
+          <Reveal><div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 32 }}>
             {[
               ['Certified translation', 'A translation accompanied by a signed Statement of Translation Accuracy from the translator. Required by USCIS, courts, and most universities.'],
               ['Notarized translation', 'A certified translation whose translator signature has been witnessed and stamped by a notary public. Required by some state courts and foreign consulates — but not by USCIS.'],
@@ -146,7 +146,7 @@ function VResources() {
                 <div style={{ fontSize: 13.5, color:'var(--mute)', lineHeight: 1.6 }}>{def}</div>
               </div>
             ))}
-          </div>
+          </div></Reveal>
         </div>
       </section>
 

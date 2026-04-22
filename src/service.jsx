@@ -69,6 +69,7 @@ function VService() {
       {/* What you receive */}
       <section style={{ padding:'96px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
         <div style={{ display:'grid', gridTemplateColumns:'320px 1fr', gap: 72, maxWidth: 1200, margin:'0 auto' }}>
+          <Reveal>
           <div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 18 }}>What you receive</div>
             <h2 className="v-serif" style={{ fontSize: 38, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>A deliverable that holds up to review.</h2>
@@ -76,7 +77,8 @@ function VService() {
               Every translation ships with three artifacts: the translated document, a signed Statement of Accuracy, and an audit record your attorney can verify.
             </p>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap: 24 }}>
+          </Reveal>
+          <Reveal delay={100}><div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap: 24 }}>
             <div>
               <div className="v-doc-ph" data-label="01 · Translated PDF" style={{ height: 280, padding: 20 }}>
                 <div className="v-serif" style={{ fontSize: 13, color:'var(--ink)' }}>Birth Certificate</div>
@@ -120,18 +122,18 @@ function VService() {
               <div style={{ fontSize: 13.5, color:'var(--ink)', marginTop: 14, fontWeight: 500 }}>The certificate</div>
               <div style={{ fontSize: 13, color:'var(--mute)', marginTop: 4 }}>Signed by a named linguist. USCIS-compliant language. Notarized on request.</div>
             </div>
-          </div>
+          </div></Reveal>
         </div>
       </section>
 
       {/* Language strip */}
       <section style={{ padding:'72px 40px', background:'var(--paper)', borderBottom:'1px solid var(--line)' }}>
         <div style={{ maxWidth: 1200, margin:'0 auto' }}>
-          <div style={{ display:'flex', alignItems:'baseline', justifyContent:'space-between', marginBottom: 40 }}>
+          <Reveal><div style={{ display:'flex', alignItems:'baseline', justifyContent:'space-between', marginBottom: 40 }}>
             <h3 className="v-serif" style={{ fontSize: 22, margin: 0, fontWeight: 400, letterSpacing:'-0.01em' }}>A few of the 120 languages we work in</h3>
             <a href="#" style={{ fontSize: 13.5, color:'var(--mute)', textDecoration:'none' }}>See full list →</a>
-          </div>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(6, 1fr)', gap: 24 }}>
+          </div></Reveal>
+          <Reveal delay={80}><div style={{ display:'grid', gridTemplateColumns:'repeat(6, 1fr)', gap: 24 }}>
             {[
               ['Español','Lo que se escribe, permanece.'],
               ['Français','Les mots choisis avec soin.'],
@@ -151,17 +153,17 @@ function VService() {
                 <div className="v-serif" style={{ fontSize: 17, lineHeight: 1.3, marginTop: 8, letterSpacing:'-0.005em' }}>{sample}</div>
               </div>
             ))}
-          </div>
+          </div></Reveal>
         </div>
       </section>
 
       {/* Use cases table */}
       <section style={{ padding:'96px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
         <div style={{ display:'grid', gridTemplateColumns:'320px 1fr', gap: 72, maxWidth: 1200, margin:'0 auto' }}>
-          <div>
+          <Reveal><div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 18 }}>Common use cases</div>
             <h2 className="v-serif" style={{ fontSize: 38, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>What we translate most.</h2>
-          </div>
+          </div></Reveal>
           <div>
             <div style={{ display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr', padding:'0 0 14px', borderBottom:'1px solid var(--line)', fontSize: 11, textTransform:'uppercase', letterSpacing:'0.06em', color:'var(--mute)' }}>
               <div>Document</div><div>Typical turnaround</div><div>Notarization</div><div>USCIS-accepted</div>
@@ -191,10 +193,10 @@ function VService() {
       {/* FAQ */}
       <section style={{ padding:'96px 40px', background:'var(--paper)', borderBottom:'1px solid var(--line)' }}>
         <div style={{ display:'grid', gridTemplateColumns:'320px 1fr', gap: 72, maxWidth: 1200, margin:'0 auto' }}>
-          <div>
+          <Reveal><div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 18 }}>Questions we're asked</div>
             <h2 className="v-serif" style={{ fontSize: 38, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>Plain answers.</h2>
-          </div>
+          </div></Reveal>
           <div>
             {[
               ['Will USCIS accept this?','Yes. Every certified translation includes a Statement of Accuracy worded to meet 8 CFR §103.2(b)(3). If USCIS rejects for translation quality, we revise free or refund in full.'],
