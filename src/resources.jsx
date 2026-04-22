@@ -65,7 +65,7 @@ function VResources() {
           <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 24 }}>
             Resources
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap: 64, alignItems:'end' }}>
+          <div className="v-g-2col" style={{ alignItems:'end' }}>
             <h1 className="v-serif" style={{ fontSize: 58, lineHeight: 1.05, letterSpacing:'-0.025em', margin: 0, fontWeight: 400 }}>
               Plain answers to the questions clients actually ask.
             </h1>
@@ -82,7 +82,7 @@ function VResources() {
           <div style={{ display:'flex', alignItems:'baseline', justifyContent:'space-between', marginBottom: 48 }}>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)' }}>01 · Guides & references</div>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 2 }}>
+          <div className="v-g-3col" style={{ gap: 2 }}>
             {guides.map((g, i) => (
               <Reveal key={i} delay={i * 60}><a href="#" style={{ display:'block', padding: 32, border:'1px solid var(--line)', textDecoration:'none', color:'inherit', background:'var(--paper)', transition:'background .12s' }}
                 onMouseEnter={e => e.currentTarget.style.background = '#fff'}
@@ -106,7 +106,7 @@ function VResources() {
 
       {/* FAQ */}
       <section style={{ padding:'80px 40px', background:'var(--paper)', borderBottom:'1px solid var(--line)' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'280px 1fr', gap: 72, maxWidth: 1200, margin:'0 auto' }}>
+        <div className="v-g-sidebar-sm" style={{ maxWidth: 1200, margin:'0 auto' }}>
           <div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 18 }}>02 · Frequently asked</div>
             <h2 className="v-serif" style={{ fontSize: 36, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>Common questions.</h2>

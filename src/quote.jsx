@@ -40,7 +40,7 @@ function VQuote() {
     <div className="v-scope" style={{ background:'var(--paper)', minHeight:'100vh' }}>
       <VNav active="Pricing" />
 
-      <div style={{ display:'grid', gridTemplateColumns:'1.3fr 1fr', minHeight:'calc(100vh - 57px)' }}>
+      <div className="v-quote-wrap" style={{ display:'grid', gridTemplateColumns:'1.3fr 1fr', minHeight:'calc(100vh - 57px)' }}>
 
         {/* Left: wizard */}
         <div style={{ padding:'56px 56px', borderRight:'1px solid var(--line)' }}>
@@ -277,7 +277,7 @@ function VQuote() {
         </div>
 
         {/* Right: live summary */}
-        <div style={{ padding: 56, background:'#fff' }}>
+        <div className="v-quote-aside" style={{ padding: 56, background:'#fff' }}>
           <div style={{ position:'sticky', top: 80 }}>
             <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom: 28 }}>
               <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)' }}>Live quote</div>

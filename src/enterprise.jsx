@@ -9,7 +9,7 @@ function VEnterprise() {
       <section style={{ padding:'72px 40px 64px', borderBottom:'1px solid var(--line)' }}>
         <div style={{ maxWidth: 1200, margin:'0 auto' }}>
           <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 24 }}>Enterprise</div>
-          <Reveal><div style={{ display:'grid', gridTemplateColumns:'1.2fr 1fr', gap: 72, alignItems:'end' }}>
+          <Reveal><div className="v-g-hero" style={{ alignItems:'end' }}>
             <div>
               <h1 className="v-serif" style={{ fontSize: 58, lineHeight: 1.05, letterSpacing:'-0.025em', margin: 0, fontWeight: 400 }}>
                 One contract.<br/>Every language.<br/>Every format.
@@ -45,7 +45,7 @@ function VEnterprise() {
       {/* Features */}
       <section style={{ padding:'96px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
         <div style={{ maxWidth: 1200, margin:'0 auto' }}>
-          <div style={{ display:'grid', gridTemplateColumns:'280px 1fr', gap: 72 }}>
+          <div className="v-g-ent-feat">
             <div style={{ position:'sticky', top: 80, alignSelf:'start' }}>
               <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 18 }}>01 · What's included</div>
               <h2 className="v-serif" style={{ fontSize: 36, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>Built for procurement, legal, and ops teams.</h2>
@@ -81,7 +81,7 @@ function VEnterprise() {
         <div style={{ maxWidth: 1200, margin:'0 auto' }}>
           <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 18 }}>02 · Services</div>
           <h2 className="v-serif" style={{ fontSize: 38, lineHeight: 1.1, letterSpacing:'-0.02em', margin:'0 0 56px', fontWeight: 400 }}>Everything under one contract.</h2>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap: 0, border:'1px solid var(--line)' }}>
+          <div className="v-g-4col" style={{ border:'1px solid var(--line)' }}>
             {[
               { name:'Translation', items:['Certified documents','Legal & contracts','Financial filings','Technical manuals','Marketing copy'] },
               { name:'Transcription', items:['Verbatim & clean-read','Legal depositions','Medical dictation','Media & broadcast','Academic research'] },
@@ -125,7 +125,7 @@ function VEnterprise() {
 
       {/* Contact form CTA */}
       <section style={{ padding:'96px 40px', background:'var(--ink)', color:'#fff' }}>
-        <div style={{ maxWidth: 1200, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap: 80, alignItems:'start' }}>
+        <div className="v-g-2col" style={{ maxWidth: 1200, margin:'0 auto', gap: 80, alignItems:'start' }}>
           <div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'rgba(255,255,255,0.5)', marginBottom: 24 }}>Get in touch</div>
             <h2 className="v-serif" style={{ fontSize: 48, lineHeight: 1.1, letterSpacing:'-0.02em', margin:'0 0 24px', fontWeight: 400, color:'#fff' }}>

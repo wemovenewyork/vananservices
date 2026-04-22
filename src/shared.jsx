@@ -30,6 +30,7 @@ const VLogo = ({ color = 'var(--ink)', size = 18 }) => (
 );
 
 const VNav = ({ active }) => {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
   const items = [
     { label: 'Services',    page: 'service' },
     { label: 'Industries',  page: 'industries' },
@@ -38,40 +39,70 @@ const VNav = ({ active }) => {
     { label: 'Enterprise',  page: 'enterprise' },
   ];
   return (
-    <header style={{
-      display:'flex', alignItems:'center', justifyContent:'space-between',
-      padding:'18px 40px', borderBottom:'1px solid var(--line)', background:'var(--paper)',
-      position:'sticky', top:0, zIndex:50,
-    }}>
-      <VLogo />
-      <nav style={{ display:'flex', gap: 28 }}>
-        {items.map(it => (
-          <a
-            key={it.label}
-            href="#"
-            className="v-nav-link"
-            onClick={e => { e.preventDefault(); if (it.page) window.navigate(it.page); }}
+    <>
+      <header style={{
+        display:'flex', alignItems:'center', justifyContent:'space-between',
+        padding:'18px 40px', borderBottom:'1px solid var(--line)', background:'var(--paper)',
+        position:'sticky', top:0, zIndex:50,
+      }}>
+        <VLogo />
+        <nav className="v-nav-links-wrap" style={{ gap: 28 }}>
+          {items.map(it => (
+            <a
+              key={it.label}
+              href="#"
+              className="v-nav-link"
+              onClick={e => { e.preventDefault(); if (it.page) window.navigate(it.page); }}
+              style={{
+                textDecoration:'none',
+                color: active === it.label ? 'var(--ink)' : 'var(--mute)',
+                fontSize: 13.5,
+                fontWeight: active === it.label ? 500 : 400,
+              }}
+            >{it.label}</a>
+          ))}
+        </nav>
+        <div className="v-nav-cta-wrap" style={{ alignItems:'center', gap: 14 }}>
+          <a href="#" onClick={e => { e.preventDefault(); window.navigate('about'); }} style={{ textDecoration:'none', color:'var(--mute)', fontSize: 13.5 }}>About</a>
+          <button
+            onClick={() => window.navigate('quote')}
             style={{
-              textDecoration:'none',
-              color: active === it.label ? 'var(--ink)' : 'var(--mute)',
-              fontSize: 13.5,
-              fontWeight: active === it.label ? 500 : 400,
+              background:'var(--brand)', color:'#fff', border:0, padding:'9px 16px',
+              borderRadius: 6, fontSize: 13.5, fontWeight: 500, cursor:'pointer',
+              letterSpacing:'-0.005em',
             }}
-          >{it.label}</a>
-        ))}
-      </nav>
-      <div style={{ display:'flex', alignItems:'center', gap: 14 }}>
-        <a href="#" style={{ textDecoration:'none', color:'var(--mute)', fontSize: 13.5 }}>Sign in</a>
-        <button
-          onClick={() => window.navigate('quote')}
-          style={{
-            background:'var(--brand)', color:'#fff', border:0, padding:'9px 16px',
-            borderRadius: 6, fontSize: 13.5, fontWeight: 500, cursor:'pointer',
-            letterSpacing:'-0.005em',
-          }}
-        >Get a quote →</button>
+          >Get a quote →</button>
+        </div>
+        {/* Hamburger */}
+        <button className="v-nav-burger" onClick={() => setMobileOpen(true)} aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <rect x="2" y="5" width="18" height="1.5" fill="var(--ink)" rx="1"/>
+            <rect x="2" y="10.25" width="18" height="1.5" fill="var(--ink)" rx="1"/>
+            <rect x="2" y="15.5" width="18" height="1.5" fill="var(--ink)" rx="1"/>
+          </svg>
+        </button>
+      </header>
+
+      {/* Mobile drawer */}
+      <div className={`v-mob-nav${mobileOpen ? ' open' : ''}`}>
+        <button className="v-mob-close" onClick={() => setMobileOpen(false)}>×</button>
+        <VLogo />
+        <div style={{ marginTop: 24 }}>
+          {[...items, { label: 'About', page: 'about' }].map(it => (
+            <a key={it.label} href="#" className="v-mob-link"
+              onClick={e => { e.preventDefault(); window.navigate(it.page); setMobileOpen(false); }}>
+              {it.label}
+            </a>
+          ))}
+        </div>
+        <div style={{ marginTop: 24 }}>
+          <button onClick={() => { window.navigate('quote'); setMobileOpen(false); }}
+            style={{ background:'var(--brand)', color:'#fff', border:0, padding:'14px 24px', borderRadius:6, fontSize:15, fontWeight:500, cursor:'pointer', width:'100%' }}>
+            Get a quote →
+          </button>
+        </div>
       </div>
-    </header>
+    </>
   );
 };
 
@@ -89,8 +120,20 @@ const VProof = ({ compact = false }) => (
         </div>
         <div style={{ fontSize: 13.5, color:'var(--ink)' }}>
           <strong style={{ fontWeight: 600 }}>4.9</strong>
-          <span style={{ color:'var(--mute)' }}> · 2,100+ customer reviews</span>
+          <span style={{ color:'var(--mute)' }}> · 2,100+ reviews</span>
         </div>
+        <span style={{ color:'var(--line)', fontSize: 18 }}>|</span>
+        {/* Trust badges */}
+        {[
+          { label:'ISO 9001:2015', color:'rgba(11,30,63,0.12)', text:'var(--brand)' },
+          { label:'SOC 2 Type II', color:'rgba(11,30,63,0.12)', text:'var(--brand)' },
+          { label:'HIPAA-ready',   color:'rgba(11,30,63,0.12)', text:'var(--brand)' },
+        ].map(b => (
+          <span key={b.label} className="v-mono" style={{
+            fontSize: 10, letterSpacing:'0.06em', padding:'4px 8px',
+            background: b.color, color: b.text, borderRadius: 3,
+          }}>{b.label}</span>
+        ))}
       </div>
       <div style={{ display:'flex', alignItems:'center', gap: 32, flexWrap:'wrap' }}>
         {['Cravath','Fenwick','Penguin RH','Pearson','Greenberg T.','WPP'].map(name => (
@@ -105,7 +148,7 @@ const VProof = ({ compact = false }) => (
 
 const VFooter = () => (
   <footer style={{ padding:'56px 40px 32px', background:'var(--ink)', color:'rgba(255,255,255,0.7)' }}>
-    <div style={{ display:'grid', gridTemplateColumns:'1.4fr 1fr 1fr 1fr 1fr', gap: 40 }}>
+    <div className="v-g-5ft">
       <div>
         <VLogo color="#fff" size={20}/>
         <p style={{ fontSize: 13, lineHeight: 1.6, marginTop: 16, maxWidth: 260, color:'rgba(255,255,255,0.55)' }}>
@@ -116,23 +159,23 @@ const VFooter = () => (
         ['Services', [
           ['Certified translation', 'service'],
           ['Legal', null],
-          ['Business', null],
-          ['Transcription', null],
-          ['Captioning', null],
-          ['Voiceover', null],
+          ['Transcription', 'service'],
+          ['Captioning', 'service'],
+          ['Voiceover', 'service'],
+          ['Subtitling', 'service'],
           ['Interpretation', null],
           ['Localization', null],
         ]],
         ['Industries', [
-          ['Immigration', null],
-          ['Legal', null],
-          ['Media & film', null],
-          ['Publishing', null],
-          ['Healthcare', null],
-          ['Corporate L&D', null],
+          ['Immigration', 'industries'],
+          ['Legal', 'industries'],
+          ['Media & film', 'industries'],
+          ['Publishing', 'industries'],
+          ['Healthcare', 'industries'],
+          ['Corporate L&D', 'industries'],
         ]],
-        ['Company', [['About',null],['Careers',null],['Press',null],['Security',null]]],
-        ['Support', [['Help center',null],['Contact',null],['Status',null],['Accessibility',null]]],
+        ['Company', [['About','about'],['Careers',null],['Press',null],['Security',null]]],
+        ['Support', [['Help center',null],['Contact','enterprise'],['Resources','resources'],['Accessibility',null]]],
       ].map(([title, links]) => (
         <div key={title}>
           <div style={{ fontSize: 12, textTransform:'uppercase', letterSpacing:'0.08em', color:'rgba(255,255,255,0.45)', marginBottom: 14 }}>{title}</div>
@@ -150,7 +193,7 @@ const VFooter = () => (
         </div>
       ))}
     </div>
-    <div style={{ display:'flex', justifyContent:'space-between', marginTop: 48, paddingTop: 24, borderTop:'1px solid rgba(255,255,255,0.1)', fontSize: 12, color:'rgba(255,255,255,0.45)' }}>
+    <div style={{ display:'flex', justifyContent:'space-between', marginTop: 48, paddingTop: 24, borderTop:'1px solid rgba(255,255,255,0.1)', fontSize: 12, color:'rgba(255,255,255,0.45)', flexWrap:'wrap', gap: 12 }}>
       <div>© 2026 Vanan Services · 224 West 35th St., Suite 1200-8, New York, NY 10001 · +1-800-230-7918</div>
       <div style={{ display:'flex', gap: 24 }}>
         {['Privacy','Terms','DPA','SOC 2'].map(l => (

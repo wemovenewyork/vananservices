@@ -74,7 +74,7 @@ function VIndustries() {
           <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 24 }}>
             Industries
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap: 64, alignItems:'end' }}>
+          <div className="v-g-2col" style={{ alignItems:'end' }}>
             <h1 className="v-serif" style={{ fontSize: 58, lineHeight: 1.05, letterSpacing:'-0.025em', margin: 0, fontWeight: 400 }}>
               Every industry has its own language.
             </h1>
@@ -88,7 +88,7 @@ function VIndustries() {
       {/* Industry cards */}
       {industries.map((ind, i) => (
         <section key={ind.id} style={{ padding:'80px 40px', borderBottom:'1px solid var(--line)', background: i % 2 === 0 ? '#fff' : 'var(--paper)' }}>
-          <Reveal><div style={{ display:'grid', gridTemplateColumns:'280px 1fr 1fr', gap: 64, maxWidth: 1200, margin:'0 auto', alignItems:'start' }}>
+          <Reveal><div className="v-g-ind-card" style={{ maxWidth: 1200, margin:'0 auto' }}>
 
             {/* Label */}
             <div>

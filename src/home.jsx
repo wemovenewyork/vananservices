@@ -7,7 +7,7 @@ function VHome() {
 
       {/* ── HERO — dark full-bleed ─────────────────────────── */}
       <section style={{ padding:'80px 40px 72px', background:'var(--brand)', borderBottom:'1px solid rgba(255,255,255,0.08)' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'1.25fr 1fr', gap: 72, alignItems:'start', maxWidth: 1200, margin:'0 auto' }}>
+        <div className="v-g-hero" style={{ maxWidth: 1200, margin:'0 auto' }}>
           <div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.1em', textTransform:'uppercase', color:'rgba(255,255,255,0.45)', marginBottom: 32 }}>
               Language services · New York City · 100+ languages
@@ -21,11 +21,11 @@ function VHome() {
             <p style={{ fontSize: 17, lineHeight: 1.6, color:'rgba(255,255,255,0.62)', marginTop: 28, maxWidth: 500 }}>
               USCIS, courts, universities, publishers. Quote in 15 minutes. Delivery in 24 hours. Every document reviewed by a certified human linguist.
             </p>
-            <div style={{ display:'flex', gap: 12, marginTop: 40 }}>
+            <div style={{ display:'flex', gap: 12, marginTop: 40, flexWrap:'wrap' }}>
               <VBtn onClick={() => window.navigate('quote')} style={{ background:'#fff', color:'var(--brand)' }}>Get a quote in 15 minutes →</VBtn>
-              <VBtn variant="ghost" style={{ color:'#fff', borderColor:'rgba(255,255,255,0.28)' }}>Talk to an enterprise lead</VBtn>
+              <VBtn onClick={() => window.navigate('enterprise')} variant="ghost" style={{ color:'#fff', borderColor:'rgba(255,255,255,0.28)' }}>Talk to an enterprise lead</VBtn>
             </div>
-            <div style={{ display:'flex', gap: 36, marginTop: 48, paddingTop: 36, borderTop:'1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ display:'flex', gap: 36, marginTop: 48, paddingTop: 36, borderTop:'1px solid rgba(255,255,255,0.1)', flexWrap:'wrap' }}>
               {[
                 ['56,000+','Projects delivered'],
                 ['100+','Languages'],
@@ -40,8 +40,8 @@ function VHome() {
             </div>
           </div>
 
-          {/* Document visual — white cards pop on dark background */}
-          <div style={{ position:'relative', height: 500 }}>
+          {/* Document visual */}
+          <div className="v-hero-doc" style={{ position:'relative', height: 500 }}>
             <div className="v-doc-ph" data-label="Source · ES · Acta de Nacimiento" style={{
               position:'absolute', top:0, left:20, width:'85%', height: 340, padding: 20,
               transform:'rotate(-1.2deg)',
@@ -95,7 +95,7 @@ function VHome() {
 
       {/* ── Services list ─────────────────────────────────── */}
       <section style={{ padding:'96px 40px 64px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'320px 1fr', gap: 72, maxWidth: 1200, margin:'0 auto' }}>
+        <div className="v-g-sidebar" style={{ maxWidth: 1200, margin:'0 auto' }}>
           <Reveal style={{ position:'sticky', top: 80, alignSelf:'start' }}>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 18 }}>01 · Services</div>
             <h2 className="v-serif" style={{ fontSize: 38, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>
@@ -107,20 +107,20 @@ function VHome() {
           </Reveal>
           <div>
             {[
-              ['01','Translation','Certified, legal, academic, audio & video — 100+ languages.', 'service'],
-              ['02','Transcription','Verbatim, clean-verbatim, timecoded. 850,000+ minutes delivered.', null],
-              ['03','Captioning','Closed, open, broadcast, YouTube. SDH, SRT, VTT.', null],
-              ['04','Subtitling','Film subtitling, dubbing & subtitling. 189,000+ minutes.', null],
-              ['05','Voice Over','Narration and commercial voice-over. 100+ languages.', null],
-              ['06','Typing','Document, legal, DTP, handwritten, data entry.', null],
-              ['07','Audio Description','Visual accessibility narration for media and broadcast.', null],
-              ['08','Video Services','Animation, editing, production, and spokesperson.', null],
-            ].map(([n,title,desc,page], i) => (
+              ['01','Translation',     'Certified, legal, academic, audio & video — 100+ languages.', 'translation'],
+              ['02','Transcription',   'Verbatim, clean-verbatim, timecoded. 850,000+ minutes delivered.', 'transcription'],
+              ['03','Captioning',      'Closed, open, broadcast, YouTube. SDH, SRT, VTT.', 'captioning'],
+              ['04','Subtitling',      'Film subtitling, dubbing & subtitling. 189,000+ minutes.', 'subtitling'],
+              ['05','Voice Over',      'Narration and commercial voice-over. 100+ languages.', 'voiceover'],
+              ['06','Typing',          'Document, legal, DTP, handwritten, data entry.', 'typing'],
+              ['07','Audio Description','Visual accessibility narration for media and broadcast.', 'audiodescription'],
+              ['08','Video Services',  'Animation, editing, production, and spokesperson.', 'video'],
+            ].map(([n, title, desc, slug], i) => (
               <Reveal key={n} delay={i * 40}>
                 <a
                   href="#"
                   className="v-svc-row"
-                  onClick={e => { e.preventDefault(); if (page) window.navigate(page); }}
+                  onClick={e => { e.preventDefault(); window.navigate('service', { service: slug }); }}
                   style={{
                     display:'grid', gridTemplateColumns:'48px 1.2fr 2fr 32px', alignItems:'center',
                     gap: 24, padding:'22px 0', borderBottom:'1px solid var(--line)',
@@ -142,7 +142,7 @@ function VHome() {
       <section style={{ padding:'96px 40px', background:'var(--paper)', borderBottom:'1px solid var(--line)' }}>
         <div style={{ maxWidth: 1200, margin:'0 auto' }}>
           <Reveal>
-            <div style={{ display:'flex', alignItems:'baseline', justifyContent:'space-between', marginBottom: 56 }}>
+            <div style={{ display:'flex', alignItems:'baseline', justifyContent:'space-between', marginBottom: 56, flexWrap:'wrap', gap: 16 }}>
               <div>
                 <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 14 }}>02 · How it works</div>
                 <h2 className="v-serif" style={{ fontSize: 38, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>From upload to delivery.</h2>
@@ -150,7 +150,7 @@ function VHome() {
               <a href="#" style={{ color:'var(--ink)', fontSize: 14, textDecoration:'none', borderBottom:'1px solid var(--line)', paddingBottom: 2 }}>Read the full workflow →</a>
             </div>
           </Reveal>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap: 48 }}>
+          <div className="v-g-3col">
             {[
               ['Upload','Drop your document or audio file. Our system detects language, page count, and formatting complexity in seconds.','Typical: 30 seconds'],
               ['Quote & approve','Firm price. No estimates, no scope creep. Pay by card, invoice, or PO.','Typical: 2 minutes'],
@@ -169,29 +169,58 @@ function VHome() {
         </div>
       </section>
 
-      {/* ── Pull quote ────────────────────────────────────── */}
+      {/* ── Testimonials ──────────────────────────────────── */}
       <section style={{ padding:'96px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
-        <Reveal style={{ maxWidth: 920, margin:'0 auto' }}>
-          <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 24 }}>03 · Enterprise</div>
-          <blockquote className="v-serif" style={{ fontSize: 38, lineHeight: 1.25, letterSpacing:'-0.015em', margin: 0, fontWeight: 400, color:'var(--ink)' }}>
-            "We moved three vendors onto Vanan last year. A single point of contact, a single contract, and a turnaround that holds up in court. It's the boring kind of excellence we wanted."
-          </blockquote>
-          <div style={{ display:'flex', alignItems:'center', gap: 14, marginTop: 36 }}>
-            <div style={{ width: 42, height: 42, borderRadius: 999, background:'var(--warm)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink: 0 }}>
-              <span className="v-serif" style={{ fontSize: 16 }}>LM</span>
-            </div>
-            <div>
-              <div style={{ fontSize: 14, fontWeight: 500 }}>Leah Morrison</div>
-              <div style={{ fontSize: 13, color:'var(--mute)' }}>Senior Paralegal, Immigration — Cravath, Swaine & Moore</div>
-            </div>
+        <div style={{ maxWidth: 1200, margin:'0 auto' }}>
+          <Reveal>
+            <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 48 }}>03 · What clients say</div>
+          </Reveal>
+          <div className="v-g-3col">
+            {[
+              {
+                quote: '"We moved three vendors onto Vanan last year. A single point of contact, a single contract, and a turnaround that holds up in court. It\'s the boring kind of excellence we wanted."',
+                name: 'Leah Morrison',
+                role: 'Senior Paralegal, Immigration — Cravath, Swaine & Moore',
+                initials: 'LM',
+              },
+              {
+                quote: '"I needed a birth certificate translation for a USCIS deadline two days away. Quote came in 4 minutes, done in 16 hours. I\'ve already recommended Vanan to my whole family."',
+                name: 'David C.',
+                role: 'Immigration client, Portland, OR',
+                initials: 'DC',
+              },
+              {
+                quote: '"Very good professional service with excellent turnaround. Very affordable. An excellent service with great online support — very easy to get in touch, very responsive."',
+                name: 'Verified client',
+                role: 'From 2,100+ customer reviews',
+                initials: 'V',
+              },
+            ].map((t, i) => (
+              <Reveal key={t.name} delay={i * 80}>
+                <div style={{ padding: 32, border:'1px solid var(--line)', background:'var(--paper)', display:'flex', flexDirection:'column', justifyContent:'space-between', gap: 24, minHeight: 240 }}>
+                  <blockquote className="v-serif" style={{ fontSize: 17, lineHeight: 1.5, letterSpacing:'-0.005em', margin: 0, fontWeight: 400, color:'var(--ink)' }}>
+                    {t.quote}
+                  </blockquote>
+                  <div style={{ display:'flex', alignItems:'center', gap: 12 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: 999, background:'var(--warm)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink: 0 }}>
+                      <span className="v-serif" style={{ fontSize: 13 }}>{t.initials}</span>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 13.5, fontWeight: 500 }}>{t.name}</div>
+                      <div style={{ fontSize: 12, color:'var(--mute)' }}>{t.role}</div>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
-        </Reveal>
+        </div>
       </section>
 
       {/* ── Two audiences ─────────────────────────────────── */}
       <section style={{ padding:'64px 40px', background:'var(--paper)', borderBottom:'1px solid var(--line)' }}>
         <Reveal style={{ maxWidth: 1200, margin:'0 auto' }}>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap: 0, border:'1px solid var(--line)', background:'#fff' }}>
+          <div className="v-g-2col" style={{ border:'1px solid var(--line)', background:'#fff' }}>
             {[
               { tag:'For individuals', title:'One document, a week from your interview.', desc:'Certified translations accepted by USCIS, universities, and courts. Upload once. Get a firm price. A notarized PDF lands in your inbox within 24 hours.', cta:'Start a certified translation', variant:'primary', page:'quote' },
               { tag:'For enterprise',  title:'One contract. Every language. Every format.', desc:'MSA, PO-based billing, dedicated PM, secure SFTP / API. SOC 2 Type II, ISO 9001:2015, and HIPAA-ready workflows.', cta:'Talk to an enterprise lead', variant:'ink', page:'enterprise' },
@@ -214,9 +243,9 @@ function VHome() {
           <h2 className="v-serif" style={{ fontSize: 64, lineHeight: 1.05, letterSpacing:'-0.025em', margin: 0, fontWeight: 400, color:'#fff' }}>
             Upload your document.<br/>Get a firm price in 15 minutes.
           </h2>
-          <div style={{ display:'flex', gap: 12, marginTop: 40 }}>
+          <div style={{ display:'flex', gap: 12, marginTop: 40, flexWrap:'wrap' }}>
             <VBtn onClick={() => window.navigate('quote')} style={{ background:'#fff', color:'var(--ink)' }}>Get a quote →</VBtn>
-            <VBtn variant="ghost" style={{ color:'#fff', borderColor:'rgba(255,255,255,0.25)' }}>Book a 20-min call</VBtn>
+            <VBtn onClick={() => window.navigate('enterprise')} variant="ghost" style={{ color:'#fff', borderColor:'rgba(255,255,255,0.25)' }}>Book a 20-min call</VBtn>
           </div>
         </Reveal>
       </section>

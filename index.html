@@ -83,6 +83,61 @@
   /* ── Industry / resource card hover ─────────────────────── */
   .v-ind-service:hover { background: rgba(10,10,10,0.025) !important; }
   .v-ind-service { transition: background 0.13s; }
+
+  /* ── Responsive grids (className-based, !important overrides inline) ── */
+  .v-g-hero      { display:grid !important; grid-template-columns:1.25fr 1fr;           gap:72px; align-items:start; }
+  .v-g-2col      { display:grid !important; grid-template-columns:1fr 1fr;              gap:48px; }
+  .v-g-sidebar   { display:grid !important; grid-template-columns:320px 1fr;            gap:72px; }
+  .v-g-sidebar-sm{ display:grid !important; grid-template-columns:280px 1fr;            gap:64px; }
+  .v-g-3col      { display:grid !important; grid-template-columns:repeat(3,1fr);        gap:48px; }
+  .v-g-4col      { display:grid !important; grid-template-columns:repeat(4,1fr);        gap:0;    }
+  .v-g-ind-card  { display:grid !important; grid-template-columns:280px 1fr 1fr;        gap:64px; align-items:start; }
+  .v-g-5ft       { display:grid !important; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:40px; }
+  .v-g-ent-feat  { display:grid !important; grid-template-columns:280px 1fr;            gap:72px; }
+
+  @media (max-width: 960px) {
+    .v-g-hero, .v-g-ind-card, .v-g-ent-feat { grid-template-columns:1fr !important; gap:40px !important; }
+    .v-g-sidebar, .v-g-sidebar-sm           { grid-template-columns:1fr !important; gap:40px !important; }
+    .v-g-3col   { grid-template-columns:1fr 1fr !important; gap:24px !important; }
+    .v-g-4col   { grid-template-columns:1fr 1fr !important; }
+    .v-g-5ft    { grid-template-columns:1fr 1fr !important; gap:28px !important; }
+    .v-hero-doc { display:none !important; }
+  }
+
+  @media (max-width: 600px) {
+    .v-g-2col, .v-g-3col, .v-g-4col, .v-g-ind-card { grid-template-columns:1fr !important; gap:20px !important; }
+    .v-g-5ft  { grid-template-columns:1fr !important; }
+    /* Shrink horizontal section padding */
+    .v-scope section, .v-scope header { padding-left:20px !important; padding-right:20px !important; }
+    /* Quote: hide sticky sidebar, go single column */
+    .v-quote-wrap  { grid-template-columns:1fr !important; }
+    .v-quote-aside { display:none !important; }
+  }
+
+  /* ── Mobile nav ──────────────────────────────────────────── */
+  .v-nav-links-wrap, .v-nav-cta-wrap { display:flex; }
+  .v-nav-burger { display:none !important; background:transparent; border:0; cursor:pointer; padding:4px; }
+
+  @media (max-width: 640px) {
+    .v-nav-links-wrap, .v-nav-cta-wrap { display:none !important; }
+    .v-nav-burger { display:flex !important; }
+  }
+
+  .v-mob-nav {
+    position:fixed; inset:0; background:var(--paper); z-index:200;
+    padding:72px 24px 40px; display:flex; flex-direction:column; gap:4px;
+    transform:translateX(100%); transition:transform 0.28s cubic-bezier(0.16,1,0.3,1);
+  }
+  .v-mob-nav.open { transform:translateX(0); }
+  .v-mob-close {
+    position:absolute; top:18px; right:20px; background:transparent; border:0;
+    cursor:pointer; font-size:26px; color:var(--ink); line-height:1;
+  }
+  .v-mob-link {
+    display:block; padding:16px 0; font-size:22px; color:var(--ink);
+    text-decoration:none; border-bottom:1px solid var(--line);
+    font-family:'Source Serif 4',serif; font-weight:400; letter-spacing:-0.01em;
+  }
 </style>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
@@ -98,6 +153,7 @@
   <script type="text/babel" src="src/industries.jsx"></script>
   <script type="text/babel" src="src/resources.jsx"></script>
   <script type="text/babel" src="src/enterprise.jsx"></script>
+  <script type="text/babel" src="src/about.jsx"></script>
   <script type="text/babel" src="src/app.jsx"></script>
 </body>
 </html>
