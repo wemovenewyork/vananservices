@@ -18,7 +18,7 @@ const VNav = ({ active }) => {
     { label: 'Industries',  page: 'industries' },
     { label: 'Pricing',     page: 'quote' },
     { label: 'Resources',   page: 'resources' },
-    { label: 'Enterprise',  page: null },
+    { label: 'Enterprise',  page: 'enterprise' },
   ];
   return (
     <header style={{

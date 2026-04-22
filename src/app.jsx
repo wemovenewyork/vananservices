@@ -16,6 +16,7 @@ function App() {
       {page === 'quote'      && <VQuote />}
       {page === 'industries' && <VIndustries />}
       {page === 'resources'  && <VResources />}
+      {page === 'enterprise' && <VEnterprise />}
     </>
   );
 }
