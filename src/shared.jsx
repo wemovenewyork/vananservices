@@ -290,4 +290,14 @@ const VLive = ({ children }) => (
   </span>
 );
 
-Object.assign(window, { VLogo, VNav, VProof, VFooter, VBtn, VLive, Reveal });
+const VSeal = ({ size = 24 }) => (
+  <div style={{
+    width: size, height: size, flexShrink: 0, borderRadius: 999,
+    border: `${Math.max(1, size / 16)}px solid var(--brand)`,
+    color: 'var(--brand)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    fontSize: size * 0.5, fontFamily: 'Source Serif 4',
+  }}>V</div>
+);
+
+Object.assign(window, { VLogo, VNav, VProof, VFooter, VBtn, VLive, VSeal, Reveal });

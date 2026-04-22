@@ -14,7 +14,7 @@ function VQuote() {
   const [dropHover, setDropHover] = React.useState(false);
   const [uploaded, setUploaded] = React.useState(false);
 
-  const steps = ['Service','Details','Upload','Contact','Quote'];
+  const steps = ['Service','Details','Upload','Quote & pay'];
 
   const services = [
     { id:'certified',     name:'Certified translation', desc:'USCIS, courts, schools',             price: 24.95, unit:'page' },
@@ -164,12 +164,7 @@ function VQuote() {
                 fontSize: 13, color:'rgba(10,10,10,0.75)', lineHeight: 1.55,
                 display:'flex', gap: 12
               }}>
-                <div style={{
-                  width: 24, height: 24, flexShrink: 0, borderRadius: 999,
-                  border:'1.5px solid var(--brand)', color:'var(--brand)',
-                  display:'flex', alignItems:'center', justifyContent:'center',
-                  fontSize: 12, fontFamily:'Source Serif 4'
-                }}>V</div>
+                <VSeal size={24} />
                 <div>
                   <strong style={{ fontWeight: 500 }}>Your likely translator:</strong> For {fromLang} → {toLang} {service === 'certified' ? 'certified civil documents' : selSvc.name.toLowerCase()}, your project will be matched with a specialist like Alexis Ortega (ATA-certified, 9 years, Latin American civil documents) or equivalent.
                 </div>
@@ -220,32 +215,12 @@ function VQuote() {
             </div>
           )}
 
-          {/* Step 3 — Contact */}
+          {/* Step 3 — Quote & pay */}
           {step === 3 && (
             <div>
-              <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 12 }}>Step 4 · Contact</div>
-              <h2 className="v-serif" style={{ fontSize: 34, lineHeight: 1.1, letterSpacing:'-0.02em', margin:'0 0 10px', fontWeight: 400 }}>Where should we send the quote?</h2>
-              <p style={{ color:'var(--mute)', fontSize: 14.5, margin:'0 0 32px' }}>We'll email you a firm price and a payment link. No sales calls.</p>
-              <div style={{ display:'flex', flexDirection:'column', gap: 18 }}>
-                <QField label="Full name">
-                  <input value={name} onChange={e => setName(e.target.value)} placeholder="Maria Delgado" style={fieldStyle} />
-                </QField>
-                <QField label="Email">
-                  <input value={email} onChange={e => setEmail(e.target.value)} placeholder="maria@example.com" style={fieldStyle} />
-                </QField>
-                <QField label="Notes for your linguist (optional)">
-                  <textarea rows={4} placeholder="e.g. please use my legal name exactly as it appears on the document" style={{ ...fieldStyle, resize:'vertical', lineHeight: 1.5 }} />
-                </QField>
-              </div>
-            </div>
-          )}
-
-          {/* Step 4 — Quote */}
-          {step === 4 && (
-            <div>
               <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'#2E9E6A', marginBottom: 12 }}>✓ Quote ready</div>
-              <h2 className="v-serif" style={{ fontSize: 34, lineHeight: 1.1, letterSpacing:'-0.02em', margin:'0 0 10px', fontWeight: 400 }}>Your firm price, ready now.</h2>
-              <p style={{ color:'var(--mute)', fontSize: 14.5, margin:'0 0 32px' }}>A copy has been sent to {email || 'your email'}. Pay now to start your 24-hour clock.</p>
+              <h2 className="v-serif" style={{ fontSize: 34, lineHeight: 1.1, letterSpacing:'-0.02em', margin:'0 0 10px', fontWeight: 400 }}>Your firm price.</h2>
+              <p style={{ color:'var(--mute)', fontSize: 14.5, margin:'0 0 32px' }}>Review your quote, enter your details, and pay to lock in your linguist today.</p>
 
               <div style={{ padding: 28, border:'1px solid var(--line)', background:'#fff', borderRadius: 4 }}>
                 <div style={{ display:'flex', justifyContent:'space-between', alignItems:'start' }}>
@@ -268,26 +243,34 @@ function VQuote() {
                 </div>
               </div>
 
-              <div style={{ display:'flex', gap: 12, marginTop: 24 }}>
+              <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap: 14, marginTop: 24 }}>
+                <QField label="Full name">
+                  <input value={name} onChange={e => setName(e.target.value)} placeholder="Maria Delgado" style={fieldStyle} />
+                </QField>
+                <QField label="Email">
+                  <input value={email} onChange={e => setEmail(e.target.value)} placeholder="maria@example.com" style={fieldStyle} />
+                </QField>
+              </div>
+              <div style={{ display:'flex', gap: 12, marginTop: 18 }}>
                 <VBtn style={{ flex: 1, justifyContent:'center' }}>Pay ${total.toFixed(2)} and start →</VBtn>
                 <VBtn variant="ghost">Pay by invoice</VBtn>
               </div>
               <div style={{ marginTop: 28, padding: 16, background:'var(--warm)', borderRadius: 4, fontSize: 13, color:'rgba(10,10,10,0.75)', lineHeight: 1.55, display:'flex', gap: 12 }}>
-                <div style={{ width: 24, height: 24, flexShrink: 0, borderRadius: 999, border:'1.5px solid var(--brand)', color:'var(--brand)', display:'flex', alignItems:'center', justifyContent:'center', fontSize: 12, fontFamily:'Source Serif 4' }}>V</div>
+                <VSeal size={24} />
                 <div>Alexis Ortega (ATA-certified, 9 years, specializes in Latin American civil documents) is available to start this translation. Pay today and she starts on your document this afternoon.</div>
               </div>
             </div>
           )}
 
           {/* Nav buttons */}
-          {step < 4 && (
+          {step < 3 && (
             <div style={{ display:'flex', justifyContent:'space-between', marginTop: 48, paddingTop: 24, borderTop:'1px solid var(--line)' }}>
               <button onClick={prev} disabled={step === 0} style={{
                 background:'transparent', border:0,
                 color: step === 0 ? 'rgba(10,10,10,0.25)' : 'var(--mute)',
                 cursor: step === 0 ? 'default' : 'pointer', fontSize: 14,
               }}>← Back</button>
-              <VBtn onClick={next}>{step === 3 ? 'See my quote →' : 'Continue →'}</VBtn>
+              <VBtn onClick={next}>{step === 2 ? 'See my quote →' : 'Continue →'}</VBtn>
             </div>
           )}
         </div>

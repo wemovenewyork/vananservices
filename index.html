@@ -7,10 +7,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  html, body { margin:0; padding:0; background:#F7F5F0; font-family:'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  html, body { margin:0; padding:0; background:#F7F5F0; font-family:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
   * { box-sizing: border-box; }
 
   .v-scope {
@@ -20,7 +20,7 @@
     --warm: #E8E4DA;
     --line: rgba(10,10,10,0.10);
     --mute: rgba(10,10,10,0.55);
-    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--ink);
     line-height: 1.45;
     -webkit-font-smoothing: antialiased;
@@ -85,7 +85,7 @@
   .v-ind-service { transition: background 0.13s; }
 
   /* ── Responsive grids (className-based, !important overrides inline) ── */
-  .v-g-hero      { display:grid !important; grid-template-columns:1.25fr 1fr;           gap:72px; align-items:start; }
+  .v-g-hero      { display:grid !important; grid-template-columns:1.4fr 1fr;            gap:56px; align-items:center; }
   .v-g-2col      { display:grid !important; grid-template-columns:1fr 1fr;              gap:48px; }
   .v-g-sidebar   { display:grid !important; grid-template-columns:320px 1fr;            gap:72px; }
   .v-g-sidebar-sm{ display:grid !important; grid-template-columns:280px 1fr;            gap:64px; }
@@ -104,6 +104,10 @@
     .v-hero-doc { display:none !important; }
   }
 
+  @media (max-width: 900px) {
+    .v-hero-doc { display:none !important; }
+  }
+
   @media (max-width: 600px) {
     .v-g-2col, .v-g-3col, .v-g-4col, .v-g-ind-card { grid-template-columns:1fr !important; gap:20px !important; }
     .v-g-5ft  { grid-template-columns:1fr !important; }
@@ -112,6 +116,17 @@
     /* Quote: hide sticky sidebar, go single column */
     .v-quote-wrap  { grid-template-columns:1fr !important; }
     .v-quote-aside { display:none !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .v-hero-doc * { transition: none !important; }
+  }
+
+  /* ── Mobile sticky CTA bar ───────────────────────────────── */
+  .v-mobile-cta-bar { display: none; }
+  @media (max-width: 820px) {
+    .v-mobile-cta-bar { display: block; }
+    body { padding-bottom: 76px; }
   }
 
   /* ── Mobile nav ──────────────────────────────────────────── */

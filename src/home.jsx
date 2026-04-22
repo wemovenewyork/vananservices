@@ -1,19 +1,26 @@
 // src/home.jsx — Homepage
 
 function VHome() {
+  const [heroActive, setHeroActive] = React.useState(false);
+
+  React.useEffect(() => {
+    const t = setTimeout(() => setHeroActive(true), 1200);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <div className="v-scope" style={{ background:'var(--paper)', minHeight:'100vh' }}>
       <VNav active="Services" />
 
       {/* ── HERO — dark full-bleed ─────────────────────────── */}
-      <section style={{ padding:'80px 40px 72px', background:'var(--brand)', borderBottom:'1px solid rgba(255,255,255,0.08)' }}>
+      <section style={{ padding:'clamp(48px, 8vw, 80px) clamp(20px, 4vw, 40px) clamp(48px, 8vw, 72px)', background:'var(--brand)', borderBottom:'1px solid rgba(255,255,255,0.08)' }}>
         <div className="v-g-hero" style={{ maxWidth: 1200, margin:'0 auto' }}>
           <div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.1em', textTransform:'uppercase', color:'rgba(255,255,255,0.45)', marginBottom: 32 }}>
               Language services · New York City · 100+ languages
             </div>
             <h1 className="v-serif" style={{
-              fontSize: 62, lineHeight: 1.02, letterSpacing:'-0.028em', margin: 0,
+              fontSize: 'clamp(40px, 6.8vw, 62px)', lineHeight: 1.02, letterSpacing:'-0.028em', margin: 0,
               fontWeight: 400, color: '#fff',
             }}>
               Certified translations,<br/>accepted where<br/>it counts.
@@ -40,10 +47,13 @@ function VHome() {
           </div>
 
           {/* Document visual */}
-          <div className="v-hero-doc" style={{ position:'relative', height: 500 }}>
+          <div className="v-hero-doc" style={{ position:'relative', height: 'clamp(340px, 42vw, 500px)' }}
+            onMouseEnter={() => setHeroActive(true)}
+            onMouseLeave={() => setHeroActive(false)}>
             <div className="v-doc-ph" data-label="Source · ES · Acta de Nacimiento" style={{
               position:'absolute', top:0, left:20, width:'85%', height: 340, padding: 20,
-              transform:'rotate(-1.2deg)',
+              transform: heroActive ? 'rotate(-4deg) scale(0.97)' : 'rotate(-1.2deg)',
+              transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)',
               boxShadow:'0 24px 80px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2)',
             }}>
               <div className="v-serif" style={{ fontSize: 10, color:'rgba(10,10,10,0.55)' }}>REPÚBLICA DEL PERÚ · RENIEC</div>
@@ -61,7 +71,8 @@ function VHome() {
               position:'absolute', bottom: 20, right: 0, width:'78%', height: 300,
               background:'#fff', border:'1px solid rgba(10,10,10,0.08)', padding: 22,
               boxShadow:'0 24px 80px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.15)',
-              transform:'rotate(1.4deg)',
+              transform: heroActive ? 'rotate(3deg) scale(1.02)' : 'rotate(1.4deg)',
+              transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)',
             }}>
               <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
                 <div className="v-mono" style={{ fontSize: 10, color:'var(--mute)', letterSpacing:'0.06em' }}>TARGET · EN · CERTIFIED</div>
