@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Vanan — Design exploration</title>
+<title>Vanan — Certified Translation & Language Services</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,19 +10,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  html, body { margin:0; padding:0; background:#f0eee9; font-family:'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  html, body { margin:0; padding:0; background:#F7F5F0; font-family:'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
   * { box-sizing: border-box; }
 
-  /* Shared prototype tokens — set via CSS variables so Tweaks can swap the palette */
   .v-scope {
     --ink: #0A0A0A;
     --brand: #0B1E3F;
-    --brand-2: #0B1E3F;
     --paper: #F7F5F0;
     --warm: #E8E4DA;
     --line: rgba(10,10,10,0.10);
     --mute: rgba(10,10,10,0.55);
-    --accent: #0B1E3F;
     font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--ink);
     line-height: 1.45;
@@ -31,7 +28,6 @@
   .v-serif { font-family: 'Source Serif 4', ui-serif, Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
   .v-mono  { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
 
-  /* Subtle document placeholder — no stock photos */
   .v-doc-ph {
     position: relative;
     background:
@@ -47,37 +43,26 @@
     letter-spacing: 0.04em; text-transform: uppercase;
   }
 
-  /* Shared small helpers used across artboards */
   .v-pill { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border:1px solid var(--line); border-radius:999px; font-size:11px; letter-spacing:0.04em; text-transform:uppercase; color: var(--mute); }
-  .v-dot { width:6px; height:6px; border-radius:999px; background: #2E9E6A; }
-  .v-hr { height:1px; background: var(--line); border:0; }
+  .v-dot { width:6px; height:6px; border-radius:999px; background: #2E9E6A; flex-shrink:0; }
+  .v-hr { height:1px; background: var(--line); border:0; margin:0; }
 
   button { font-family: inherit; }
   input, textarea, select { font-family: inherit; }
-</style>
 
-<!-- Tweak defaults (editable by the host) -->
-<script>
-  window.TWEAKS = /*EDITMODE-BEGIN*/{
-    "brandColor": "blue",
-    "headlineVariant": 0
-  }/*EDITMODE-END*/;
-</script>
+  details summary::-webkit-details-marker { display: none; }
+</style>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
-
 <body>
   <div id="root"></div>
-
-  <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="src/shared.jsx"></script>
   <script type="text/babel" src="src/home.jsx"></script>
   <script type="text/babel" src="src/service.jsx"></script>
   <script type="text/babel" src="src/quote.jsx"></script>
-  <script type="text/babel" src="src/tweaks.jsx"></script>
   <script type="text/babel" src="src/app.jsx"></script>
 </body>
 </html>

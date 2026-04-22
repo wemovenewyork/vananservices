@@ -1,65 +1,64 @@
-// src/service.jsx — Service detail page: Certified translation
+// src/service.jsx — Certified translation service page
 
 function VService() {
   return (
-    <div className="v-scope" style={{ background:'var(--paper)', width:'100%' }}>
+    <div className="v-scope" style={{ background:'var(--paper)', minHeight:'100vh' }}>
       <VNav active="Services" />
 
       {/* Breadcrumb + hero */}
       <section style={{ padding:'36px 40px 64px', borderBottom:'1px solid var(--line)' }}>
-        <div style={{ display:'flex', alignItems:'center', gap: 10, fontSize: 12.5, color:'var(--mute)', marginBottom: 44 }}>
-          <a href="#" style={{ color:'var(--mute)', textDecoration:'none' }}>Services</a>
-          <span>/</span>
-          <span style={{ color:'var(--ink)' }}>Certified document translation</span>
-        </div>
-        <div style={{ display:'grid', gridTemplateColumns:'1.2fr 1fr', gap: 64, alignItems:'end' }}>
-          <div>
-            <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--brand)', marginBottom: 24 }}>
-              Service · 01
-            </div>
-            <h1 className="v-serif" style={{ fontSize: 58, lineHeight: 1.05, letterSpacing:'-0.025em', margin: 0, fontWeight: 400, textWrap:'balance' }}>
-              Certified translation,<br/>accepted by USCIS.
-            </h1>
-            <p style={{ fontSize: 17, lineHeight: 1.55, color:'var(--mute)', marginTop: 24, maxWidth: 540, textWrap:'pretty' }}>
-              For green cards, naturalization, courts, and academic admissions. Every page signed by a certified linguist with a Statement of Translation Accuracy. Delivered as a digital PDF with a notarized hard copy on request.
-            </p>
-            <div style={{ display:'flex', gap: 12, marginTop: 32 }}>
-              <VBtn>Start my translation →</VBtn>
-              <VBtn variant="ghost">Download sample certificate</VBtn>
-            </div>
+        <div style={{ maxWidth: 1200, margin:'0 auto' }}>
+          <div style={{ display:'flex', alignItems:'center', gap: 10, fontSize: 12.5, color:'var(--mute)', marginBottom: 44 }}>
+            <a href="#" onClick={e => { e.preventDefault(); window.navigate('home'); }} style={{ color:'var(--mute)', textDecoration:'none' }}>Services</a>
+            <span>/</span>
+            <span style={{ color:'var(--ink)' }}>Certified document translation</span>
           </div>
+          <div style={{ display:'grid', gridTemplateColumns:'1.2fr 1fr', gap: 64, alignItems:'end' }}>
+            <div>
+              <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--brand)', marginBottom: 24 }}>
+                Service · 01
+              </div>
+              <h1 className="v-serif" style={{ fontSize: 58, lineHeight: 1.05, letterSpacing:'-0.025em', margin: 0, fontWeight: 400 }}>
+                Certified translation,<br/>accepted by USCIS.
+              </h1>
+              <p style={{ fontSize: 17, lineHeight: 1.55, color:'var(--mute)', marginTop: 24, maxWidth: 540 }}>
+                For green cards, naturalization, courts, and academic admissions. Every page signed by a certified linguist with a Statement of Translation Accuracy. Delivered as a digital PDF with a notarized hard copy on request.
+              </p>
+              <div style={{ display:'flex', gap: 12, marginTop: 32 }}>
+                <VBtn onClick={() => window.navigate('quote')}>Start my translation →</VBtn>
+                <VBtn variant="ghost">Download sample certificate</VBtn>
+              </div>
+            </div>
 
-          {/* Pricing card */}
-          <div style={{
-            background:'#fff', border:'1px solid var(--line)', padding: 28,
-            boxShadow:'0 2px 6px rgba(10,10,10,0.03)',
-          }}>
-            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom: 20 }}>
-              <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.06em', textTransform:'uppercase', color:'var(--mute)' }}>Starts at</div>
-              <VLive>Quoting live</VLive>
-            </div>
-            <div style={{ display:'flex', alignItems:'baseline', gap: 8 }}>
-              <span className="v-serif" style={{ fontSize: 56, lineHeight: 1, letterSpacing:'-0.02em' }}>$24.95</span>
-              <span style={{ fontSize: 14, color:'var(--mute)' }}>/ page · USCIS-certified</span>
-            </div>
-            <hr className="v-hr" style={{ margin:'22px 0' }} />
-            <div style={{ display:'flex', flexDirection:'column', gap: 10 }}>
-              {[
-                ['24-hour delivery','Included'],
-                ['Statement of Accuracy','Included'],
-                ['Digital PDF + editable','Included'],
-                ['Notarized hard copy','+$19.95'],
-                ['Same-day rush','+50%'],
-              ].map(([k,v]) => (
-                <div key={k} style={{ display:'flex', justifyContent:'space-between', fontSize: 13.5 }}>
-                  <span style={{ color:'var(--ink)' }}>{k}</span>
-                  <span style={{ color: v.startsWith('+') ? 'var(--mute)' : 'var(--ink)', fontWeight: v.startsWith('+') ? 400 : 500 }}>{v}</span>
-                </div>
-              ))}
-            </div>
-            <hr className="v-hr" style={{ margin:'22px 0 18px' }} />
-            <div style={{ fontSize: 12, color:'var(--mute)', lineHeight: 1.5 }}>
-              Firm price at quote. No hidden fees. Money-back guarantee if USCIS rejects for translation quality.
+            {/* Pricing card */}
+            <div style={{ background:'#fff', border:'1px solid var(--line)', padding: 28, boxShadow:'0 2px 6px rgba(10,10,10,0.03)' }}>
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom: 20 }}>
+                <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.06em', textTransform:'uppercase', color:'var(--mute)' }}>Starts at</div>
+                <VLive>Quoting live</VLive>
+              </div>
+              <div style={{ display:'flex', alignItems:'baseline', gap: 8 }}>
+                <span className="v-serif" style={{ fontSize: 56, lineHeight: 1, letterSpacing:'-0.02em' }}>$24.95</span>
+                <span style={{ fontSize: 14, color:'var(--mute)' }}>/ page · USCIS-certified</span>
+              </div>
+              <hr className="v-hr" style={{ margin:'22px 0' }} />
+              <div style={{ display:'flex', flexDirection:'column', gap: 10 }}>
+                {[
+                  ['24-hour delivery','Included'],
+                  ['Statement of Accuracy','Included'],
+                  ['Digital PDF + editable','Included'],
+                  ['Notarized hard copy','+$19.95'],
+                  ['Same-day rush','+50%'],
+                ].map(([k,v]) => (
+                  <div key={k} style={{ display:'flex', justifyContent:'space-between', fontSize: 13.5 }}>
+                    <span style={{ color:'var(--ink)' }}>{k}</span>
+                    <span style={{ color: v.startsWith('+') ? 'var(--mute)' : 'var(--ink)', fontWeight: v.startsWith('+') ? 400 : 500 }}>{v}</span>
+                  </div>
+                ))}
+              </div>
+              <hr className="v-hr" style={{ margin:'22px 0 18px' }} />
+              <div style={{ fontSize: 12, color:'var(--mute)', lineHeight: 1.5 }}>
+                Firm price at quote. No hidden fees. Money-back guarantee if USCIS rejects for translation quality.
+              </div>
             </div>
           </div>
         </div>
@@ -67,17 +66,16 @@ function VService() {
 
       <VProof />
 
-      {/* What you receive — detailed, visual */}
+      {/* What you receive */}
       <section style={{ padding:'96px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'320px 1fr', gap: 72 }}>
+        <div style={{ display:'grid', gridTemplateColumns:'320px 1fr', gap: 72, maxWidth: 1200, margin:'0 auto' }}>
           <div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 18 }}>What you receive</div>
             <h2 className="v-serif" style={{ fontSize: 38, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>A deliverable that holds up to review.</h2>
-            <p style={{ color:'var(--mute)', fontSize: 15, marginTop: 18, maxWidth: 300, textWrap:'pretty' }}>
+            <p style={{ color:'var(--mute)', fontSize: 15, marginTop: 18, maxWidth: 300 }}>
               Every translation ships with three artifacts: the translated document, a signed Statement of Accuracy, and an audit record your attorney can verify.
             </p>
           </div>
-
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap: 24 }}>
             <div>
               <div className="v-doc-ph" data-label="01 · Translated PDF" style={{ height: 280, padding: 20 }}>
@@ -93,11 +91,8 @@ function VService() {
                 </div>
               </div>
               <div style={{ fontSize: 13.5, color:'var(--ink)', marginTop: 14, fontWeight: 500 }}>The translation</div>
-              <div style={{ fontSize: 13, color:'var(--mute)', marginTop: 4 }}>
-                Mirrors the source layout page-for-page. Stamps, seals, and signatures described in brackets.
-              </div>
+              <div style={{ fontSize: 13, color:'var(--mute)', marginTop: 4 }}>Mirrors the source layout page-for-page. Stamps, seals, and signatures described in brackets.</div>
             </div>
-
             <div>
               <div style={{ height: 280, padding: 20, background:'#fff', border:'1px solid var(--line)', position:'relative' }}>
                 <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
@@ -123,56 +118,53 @@ function VService() {
                 </div>
               </div>
               <div style={{ fontSize: 13.5, color:'var(--ink)', marginTop: 14, fontWeight: 500 }}>The certificate</div>
-              <div style={{ fontSize: 13, color:'var(--mute)', marginTop: 4 }}>
-                Signed by a named linguist. USCIS-compliant language. Notarized on request.
-              </div>
+              <div style={{ fontSize: 13, color:'var(--mute)', marginTop: 4 }}>Signed by a named linguist. USCIS-compliant language. Notarized on request.</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Language sample strip — type-as-imagery */}
-      <section style={{ padding:'72px 40px', background:'var(--paper)', borderBottom:'1px solid var(--line)', overflow:'hidden' }}>
-        <div style={{ display:'flex', alignItems:'baseline', justifyContent:'space-between', marginBottom: 40 }}>
-          <h3 className="v-serif" style={{ fontSize: 22, margin: 0, fontWeight: 400, letterSpacing:'-0.01em' }}>A few of the 120 languages we work in</h3>
-          <a href="#" style={{ fontSize: 13.5, color:'var(--mute)', textDecoration:'none' }}>See full list →</a>
-        </div>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(6, 1fr)', gap: 24 }}>
-          {[
-            ['Español','Lo que se escribe, permanece.'],
-            ['Français','Les mots choisis avec soin.'],
-            ['العربية','الكلمات تحمل الثقل.'],
-            ['中文','文字，谨慎之选。'],
-            ['Русский','Слова весят.'],
-            ['日本語','言葉は重みを持つ。'],
-            ['한국어','말에는 무게가 있다.'],
-            ['Português','Palavras pesam.'],
-            ['Deutsch','Worte haben Gewicht.'],
-            ['हिन्दी','शब्दों का वज़न होता है।'],
-            ['Türkçe','Sözler ağırdır.'],
-            ['Tiếng Việt','Lời có trọng lượng.'],
-          ].map(([name, sample]) => (
-            <div key={name} style={{ paddingTop: 16, borderTop:'1px solid var(--line)' }}>
-              <div className="v-mono" style={{ fontSize: 10, letterSpacing:'0.06em', textTransform:'uppercase', color:'var(--mute)' }}>{name}</div>
-              <div className="v-serif" style={{ fontSize: 17, lineHeight: 1.3, marginTop: 8, letterSpacing:'-0.005em' }}>{sample}</div>
-            </div>
-          ))}
+      {/* Language strip */}
+      <section style={{ padding:'72px 40px', background:'var(--paper)', borderBottom:'1px solid var(--line)' }}>
+        <div style={{ maxWidth: 1200, margin:'0 auto' }}>
+          <div style={{ display:'flex', alignItems:'baseline', justifyContent:'space-between', marginBottom: 40 }}>
+            <h3 className="v-serif" style={{ fontSize: 22, margin: 0, fontWeight: 400, letterSpacing:'-0.01em' }}>A few of the 120 languages we work in</h3>
+            <a href="#" style={{ fontSize: 13.5, color:'var(--mute)', textDecoration:'none' }}>See full list →</a>
+          </div>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(6, 1fr)', gap: 24 }}>
+            {[
+              ['Español','Lo que se escribe, permanece.'],
+              ['Français','Les mots choisis avec soin.'],
+              ['العربية','الكلمات تحمل الثقل.'],
+              ['中文','文字，谨慎之选。'],
+              ['Русский','Слова весят.'],
+              ['日本語','言葉は重みを持つ。'],
+              ['한국어','말에는 무게가 있다.'],
+              ['Português','Palavras pesam.'],
+              ['Deutsch','Worte haben Gewicht.'],
+              ['हिन्दी','शब्दों का वज़न होता है।'],
+              ['Türkçe','Sözler ağırdır.'],
+              ['Tiếng Việt','Lời có trọng lượng.'],
+            ].map(([name, sample]) => (
+              <div key={name} style={{ paddingTop: 16, borderTop:'1px solid var(--line)' }}>
+                <div className="v-mono" style={{ fontSize: 10, letterSpacing:'0.06em', textTransform:'uppercase', color:'var(--mute)' }}>{name}</div>
+                <div className="v-serif" style={{ fontSize: 17, lineHeight: 1.3, marginTop: 8, letterSpacing:'-0.005em' }}>{sample}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Use cases — as a table, because that's what anxious users need */}
+      {/* Use cases table */}
       <section style={{ padding:'96px 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'320px 1fr', gap: 72 }}>
+        <div style={{ display:'grid', gridTemplateColumns:'320px 1fr', gap: 72, maxWidth: 1200, margin:'0 auto' }}>
           <div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 18 }}>Common use cases</div>
             <h2 className="v-serif" style={{ fontSize: 38, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>What we translate most.</h2>
           </div>
           <div>
             <div style={{ display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr', padding:'0 0 14px', borderBottom:'1px solid var(--line)', fontSize: 11, textTransform:'uppercase', letterSpacing:'0.06em', color:'var(--mute)' }}>
-              <div>Document</div>
-              <div>Typical turnaround</div>
-              <div>Notarization</div>
-              <div>USCIS-accepted</div>
+              <div>Document</div><div>Typical turnaround</div><div>Notarization</div><div>USCIS-accepted</div>
             </div>
             {[
               ['Birth certificate','24 hours','Optional','Yes'],
@@ -196,9 +188,9 @@ function VService() {
         </div>
       </section>
 
-      {/* FAQ — the anxious user's real questions */}
+      {/* FAQ */}
       <section style={{ padding:'96px 40px', background:'var(--paper)', borderBottom:'1px solid var(--line)' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'320px 1fr', gap: 72 }}>
+        <div style={{ display:'grid', gridTemplateColumns:'320px 1fr', gap: 72, maxWidth: 1200, margin:'0 auto' }}>
           <div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 18 }}>Questions we're asked</div>
             <h2 className="v-serif" style={{ fontSize: 38, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400 }}>Plain answers.</h2>
@@ -214,9 +206,9 @@ function VService() {
               <details key={q} open={i === 0} style={{ borderBottom:'1px solid var(--line)', padding:'22px 0' }}>
                 <summary style={{ cursor:'pointer', listStyle:'none', display:'flex', justifyContent:'space-between', alignItems:'center', gap: 24 }}>
                   <span className="v-serif" style={{ fontSize: 20, letterSpacing:'-0.01em' }}>{q}</span>
-                  <span style={{ color:'var(--mute)', fontSize: 20 }}>+</span>
+                  <span style={{ color:'var(--mute)', fontSize: 20, flexShrink: 0 }}>+</span>
                 </summary>
-                <p style={{ color:'var(--mute)', fontSize: 14.5, lineHeight: 1.65, marginTop: 14, maxWidth: 640, textWrap:'pretty' }}>{a}</p>
+                <p style={{ color:'var(--mute)', fontSize: 14.5, lineHeight: 1.65, marginTop: 14, maxWidth: 640 }}>{a}</p>
               </details>
             ))}
           </div>
@@ -225,12 +217,12 @@ function VService() {
 
       {/* CTA */}
       <section style={{ padding:'96px 40px', background:'var(--ink)', color:'#fff' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'1.4fr 1fr', gap: 64, alignItems:'center' }}>
+        <div style={{ display:'grid', gridTemplateColumns:'1.4fr 1fr', gap: 64, alignItems:'center', maxWidth: 1200, margin:'0 auto' }}>
           <h2 className="v-serif" style={{ fontSize: 48, lineHeight: 1.1, letterSpacing:'-0.02em', margin: 0, fontWeight: 400, color:'#fff' }}>
             Still have a question before you start?
           </h2>
           <div style={{ display:'flex', flexDirection:'column', gap: 14 }}>
-            <VBtn style={{ background:'#fff', color:'var(--ink)', justifyContent:'space-between', width:'100%' }}>
+            <VBtn onClick={() => window.navigate('quote')} style={{ background:'#fff', color:'var(--ink)', justifyContent:'space-between', width:'100%' }}>
               <span>Start a certified translation</span><span>→</span>
             </VBtn>
             <VBtn variant="ghost" style={{ color:'#fff', borderColor:'rgba(255,255,255,0.25)', justifyContent:'space-between', width:'100%' }}>
