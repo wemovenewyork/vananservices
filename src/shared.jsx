@@ -290,6 +290,61 @@ const VLive = ({ children }) => (
   </span>
 );
 
+// Reusable photo placeholder — swap for <img> when photography arrives
+// treatment: 'ink' | 'paper' | 'warm'
+// aspect: '4:5' | '21:9' | '4:3' | '1:1' etc.
+function ImagePlaceholder({ treatment = 'ink', aspect = '4:5', label, number, centerIcon = 'camera', centerLabel, initials, ariaLabel, style = {}, className = '' }) {
+  const [wNum, hNum] = aspect.split(':').map(Number);
+  const isLight   = treatment === 'paper';
+  const labelClr  = isLight ? 'rgba(26,24,21,0.4)'    : 'rgba(245,241,234,0.4)';
+  const initClr   = isLight ? 'rgba(26,24,21,0.8)'    : 'rgba(245,241,234,0.8)';
+  const iconClr   = isLight ? 'rgba(26,24,21,0.3)'    : 'rgba(245,241,234,0.25)';
+  const monoFont  = "'JetBrains Mono', ui-monospace, monospace";
+  const CamIcon   = () => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+      <circle cx="12" cy="13" r="3"/>
+    </svg>
+  );
+  const ImgIcon   = () => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <polyline points="21 15 16 10 5 21"/>
+    </svg>
+  );
+  return (
+    <div
+      className={`placeholder-${treatment} ${className}`}
+      role="img"
+      aria-label={ariaLabel || `Placeholder: ${label || 'image'}`}
+      style={{ position:'relative', width:'100%', aspectRatio:`${wNum} / ${hNum}`, overflow:'hidden', ...style }}
+    >
+      {number && (
+        <span style={{ position:'absolute', top:14, right:14, fontFamily:monoFont, fontSize:10, letterSpacing:'0.08em', textTransform:'uppercase', color:labelClr, zIndex:1 }}>{number}</span>
+      )}
+      <div style={{ position:'absolute', inset:0, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:10 }}>
+        {initials ? (
+          <span style={{ fontFamily:'Fraunces', fontSize:'clamp(2.5rem,8vw,6rem)', fontWeight:300, fontVariationSettings:"'SOFT' 100", lineHeight:1, color:initClr }}>{initials}</span>
+        ) : (
+          <>
+            <span style={{ color:iconClr, display:'flex' }}>{centerIcon === 'image' ? <ImgIcon /> : <CamIcon />}</span>
+            {centerLabel && (
+              <span style={{ fontFamily:'Fraunces', fontStyle:'italic', fontSize:13, fontWeight:300, fontVariationSettings:"'SOFT' 100", color:labelClr }}>{centerLabel}</span>
+            )}
+          </>
+        )}
+      </div>
+      {label && (
+        <div style={{ position:'absolute', bottom:12, left:12, display:'flex', alignItems:'center', gap:7, zIndex:1 }}>
+          <span style={{ width:5, height:5, borderRadius:999, background:'#C8541C', flexShrink:0, display:'block' }} />
+          <span style={{ fontFamily:monoFont, fontSize:9, letterSpacing:'0.08em', textTransform:'uppercase', color:labelClr }}>{label}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const VSeal = ({ size = 24 }) => (
   <div style={{
     width: size, height: size, flexShrink: 0, borderRadius: 999,
@@ -300,4 +355,4 @@ const VSeal = ({ size = 24 }) => (
   }}>V</div>
 );
 
-Object.assign(window, { VLogo, VNav, VProof, VFooter, VBtn, VLive, VSeal, Reveal });
+Object.assign(window, { VLogo, VNav, VProof, VFooter, VBtn, VLive, VSeal, ImagePlaceholder, Reveal });
