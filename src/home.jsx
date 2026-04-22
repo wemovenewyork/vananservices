@@ -10,7 +10,7 @@ function VHome() {
         <div style={{ display:'grid', gridTemplateColumns:'1.25fr 1fr', gap: 72, alignItems:'start', maxWidth: 1200, margin:'0 auto' }}>
           <div>
             <div className="v-mono" style={{ fontSize: 11, letterSpacing:'0.08em', textTransform:'uppercase', color:'var(--mute)', marginBottom: 28 }}>
-              Language services · Est. 2008
+              Language services · New York City · 100+ languages
             </div>
             <h1 className="v-serif" style={{
               fontSize: 60, lineHeight: 1.04, letterSpacing:'-0.025em', margin: 0,
@@ -27,10 +27,10 @@ function VHome() {
             </div>
             <div style={{ display:'flex', gap: 28, marginTop: 40, fontSize: 13, color:'var(--mute)' }}>
               {[
-                ['USCIS-accepted','Every certified translation'],
-                ['ISO 17100','Translation services'],
-                ['ISO 27001','Information security'],
-                ['SOC 2 Type II','Enterprise ready'],
+                ['56,000+','Projects delivered'],
+                ['100+','Languages supported'],
+                ['28,700+','Satisfied clients'],
+                ['ISO 9001:2015','Certified quality'],
               ].map(([a,b]) => (
                 <div key={a}>
                   <div style={{ color:'var(--ink)', fontWeight: 500 }}>{a}</div>
@@ -107,14 +107,14 @@ function VHome() {
           </div>
           <div>
             {[
-              ['01','Certified document translation','USCIS, court, academic. PDF + notarized hard copy.', 'service'],
-              ['02','Legal translation','Contracts, pleadings, e-discovery. ISO 17100 workflow.', null],
-              ['03','Business & corporate','Financial filings, investor decks, board minutes.', null],
-              ['04','Transcription','Verbatim, clean-verbatim, timecoded. 99% accuracy SLA.', null],
-              ['05','Captioning & subtitles','SDH, SRT, VTT, burned-in. Broadcast-grade QC.', null],
-              ['06','Voiceover & dubbing','Native talent in 120 languages. Studio or remote.', null],
-              ['07','Interpretation','Simultaneous, consecutive, remote. Legal & medical.', null],
-              ['08','Localization','Software, web, e-learning. Continuous LQA.', null],
+              ['01','Translation','Certified, legal, academic, audio & video — 100+ languages.', 'service'],
+              ['02','Transcription','Verbatim, clean-verbatim, timecoded. 850,000+ minutes delivered.', null],
+              ['03','Captioning','Closed, open, broadcast, YouTube. SDH, SRT, VTT.', null],
+              ['04','Subtitling','Film subtitling, dubbing & subtitling. 189,000+ minutes.', null],
+              ['05','Voice Over','Narration and commercial voice-over. 100+ languages.', null],
+              ['06','Typing','Document, legal, DTP, handwritten, data entry.', null],
+              ['07','Audio Description','Visual accessibility narration for media and broadcast.', null],
+              ['08','Video Services','Animation, editing, production, and spokesperson.', null],
             ].map(([n,title,desc,page]) => (
               <a
                 key={n}

@@ -229,7 +229,7 @@ function VService() {
               <span>Chat with a project manager</span><span>↗</span>
             </VBtn>
             <VBtn variant="ghost" style={{ color:'#fff', borderColor:'rgba(255,255,255,0.25)', justifyContent:'space-between', width:'100%' }}>
-              <span>Email support@vanan.co</span><span>↗</span>
+              <span>Email support@vananservices.com</span><span>↗</span>
             </VBtn>
           </div>
         </div>

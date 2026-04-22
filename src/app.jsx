@@ -11,9 +11,11 @@ function App() {
 
   return (
     <>
-      {page === 'home'    && <VHome />}
-      {page === 'service' && <VService />}
-      {page === 'quote'   && <VQuote />}
+      {page === 'home'       && <VHome />}
+      {page === 'service'    && <VService />}
+      {page === 'quote'      && <VQuote />}
+      {page === 'industries' && <VIndustries />}
+      {page === 'resources'  && <VResources />}
     </>
   );
 }

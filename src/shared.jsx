@@ -14,11 +14,11 @@ const VLogo = ({ color = 'var(--ink)', size = 18 }) => (
 
 const VNav = ({ active }) => {
   const items = [
-    { label: 'Services',      page: 'service' },
-    { label: 'Industries',    page: null },
-    { label: 'Pricing',       page: 'quote' },
-    { label: 'Resources',     page: null },
-    { label: 'Enterprise',    page: null },
+    { label: 'Services',    page: 'service' },
+    { label: 'Industries',  page: 'industries' },
+    { label: 'Pricing',     page: 'quote' },
+    { label: 'Resources',   page: 'resources' },
+    { label: 'Enterprise',  page: null },
   ];
   return (
     <header style={{
@@ -71,7 +71,7 @@ const VProof = ({ compact = false }) => (
         </div>
         <div style={{ fontSize: 13.5, color:'var(--ink)' }}>
           <strong style={{ fontWeight: 600 }}>4.9</strong>
-          <span style={{ color:'var(--mute)' }}> · 2,847 reviews on Trustpilot</span>
+          <span style={{ color:'var(--mute)' }}> · 2,100+ customer reviews</span>
         </div>
       </div>
       <div style={{ display:'flex', alignItems:'center', gap: 32, flexWrap:'wrap' }}>
@@ -91,7 +91,7 @@ const VFooter = () => (
       <div>
         <VLogo color="#fff" size={20}/>
         <p style={{ fontSize: 13, lineHeight: 1.6, marginTop: 16, maxWidth: 260, color:'rgba(255,255,255,0.55)' }}>
-          Certified translation, transcription, and localization. Trusted by immigration attorneys, newsrooms, and Fortune 500 legal teams.
+          Translation, transcription, captioning, and voice-over in 100+ languages. 56,000+ projects delivered. New York City.
         </p>
       </div>
       {[
@@ -133,7 +133,7 @@ const VFooter = () => (
       ))}
     </div>
     <div style={{ display:'flex', justifyContent:'space-between', marginTop: 48, paddingTop: 24, borderTop:'1px solid rgba(255,255,255,0.1)', fontSize: 12, color:'rgba(255,255,255,0.45)' }}>
-      <div>© 2026 Vanan Services, Inc.</div>
+      <div>© 2026 Vanan Services · 224 West 35th St., Suite 1200-8, New York, NY 10001 · +1-800-230-7918</div>
       <div style={{ display:'flex', gap: 24 }}>
         {['Privacy','Terms','DPA','SOC 2'].map(l => (
           <a key={l} href="#" style={{ color:'inherit', textDecoration:'none' }}>{l}</a>
