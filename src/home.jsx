@@ -54,12 +54,6 @@ function LangInterstitial() {
 }
 
 function VHome() {
-  const [heroActive, setHeroActive] = React.useState(false);
-
-  React.useEffect(() => {
-    const t = setTimeout(() => setHeroActive(true), 1200);
-    return () => clearTimeout(t);
-  }, []);
 
   return (
     <div className="v-scope" style={{ background:'var(--paper)', minHeight:'100vh' }}>
@@ -98,18 +92,12 @@ function VHome() {
               ))}
             </div>
 
-            {/* Slot 01 — PM portrait below stats */}
-            {/* TODO: Replace with <Image src="/team/steffi.jpg" /> when photography is delivered */}
-            <div style={{ display:'flex', alignItems:'center', gap:16, marginTop:36, paddingTop:24, borderTop:'1px solid rgba(255,255,255,0.08)' }}
-              aria-label="Placeholder: portrait of Steffi K., Senior Project Manager">
-              <ImagePlaceholder
-                treatment="ink"
-                aspect="1:1"
-                number="01"
-                centerIcon="camera"
-                centerLabel="portrait"
-                ariaLabel="Placeholder: portrait of Steffi K., Senior Project Manager"
-                style={{ width:56, flexShrink:0, borderRadius:999 }}
+            {/* Slot 01 — PM portrait */}
+            <div style={{ display:'flex', alignItems:'center', gap:16, marginTop:36, paddingTop:24, borderTop:'1px solid rgba(255,255,255,0.08)' }}>
+              <img
+                src="/images/hero-pm.png"
+                alt="Steffi K., Senior Project Manager, reviewing documents at desk"
+                style={{ width:56, height:56, borderRadius:999, objectFit:'cover', objectPosition:'center top', flexShrink:0, display:'block' }}
               />
               <div>
                 <div style={{ fontSize:12, fontWeight:500, color:'rgba(255,255,255,0.9)', lineHeight:1.3 }}>Steffi K.</div>
@@ -120,56 +108,16 @@ function VHome() {
             </div>
           </div>
 
-          {/* Document visual */}
-          <div className="v-hero-doc" style={{ position:'relative', height: 'clamp(340px, 42vw, 500px)' }}
-            onMouseEnter={() => setHeroActive(true)}
-            onMouseLeave={() => setHeroActive(false)}>
-            <div className="v-doc-ph" data-label="Source · ES · Acta de Nacimiento" style={{
-              position:'absolute', top:0, left:20, width:'85%', height: 340, padding: 20,
-              transform: heroActive ? 'rotate(-4deg) scale(0.97)' : 'rotate(-1.2deg)',
-              transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)',
-              boxShadow:'0 24px 80px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2)',
-            }}>
-              <div className="v-serif" style={{ fontSize: 10, color:'rgba(10,10,10,0.55)' }}>REPÚBLICA DEL PERÚ · RENIEC</div>
-              <div className="v-serif" style={{ fontSize: 15, marginTop: 14, color:'var(--ink)' }}>Acta de Nacimiento</div>
-              <div style={{ fontSize: 10, color:'var(--mute)', marginTop: 4 }}>N° 2024-0481-LIM</div>
-              <div style={{ height: 1, background:'rgba(10,10,10,0.1)', margin:'14px 0' }} />
-              <div style={{ fontSize: 11, lineHeight: 1.8, color:'rgba(10,10,10,0.7)' }}>
-                En la ciudad de Lima, a los veintitrés días del mes…<br/>
-                Nombre: ▂▂▂▂▂▂▂▂▂▂▂▂<br/>
-                Fecha de nacimiento: ▂▂ de ▂▂▂▂▂ de ▂▂▂▂<br/>
-                Sexo: ▂▂▂▂▂▂▂
-              </div>
-            </div>
-            <div style={{
-              position:'absolute', bottom: 20, right: 0, width:'78%', height: 300,
-              background:'#fff', border:'1px solid rgba(10,10,10,0.08)', padding: 22,
-              boxShadow:'0 24px 80px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.15)',
-              transform: heroActive ? 'rotate(3deg) scale(1.02)' : 'rotate(1.4deg)',
-              transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1)',
-            }}>
-              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-                <div className="v-mono" style={{ fontSize: 10, color:'var(--mute)', letterSpacing:'0.06em' }}>TARGET · EN · CERTIFIED</div>
-                <div style={{ display:'flex', alignItems:'center', gap: 6, fontSize: 11, color:'#2E9E6A' }}>
-                  <span className="v-dot"/> Ready
-                </div>
-              </div>
-              <div className="v-serif" style={{ fontSize: 15, marginTop: 14, color:'var(--ink)' }}>Birth Certificate</div>
-              <div style={{ fontSize: 10, color:'var(--mute)', marginTop: 4 }}>No. 2024-0481-LIM</div>
-              <div style={{ height: 1, background:'rgba(10,10,10,0.1)', margin:'14px 0' }} />
-              <div style={{ fontSize: 11, lineHeight: 1.8, color:'rgba(10,10,10,0.75)' }}>
-                In the city of Lima, on the twenty-third day of the month…<br/>
-                Full name: Maria C. Delgado-Salas<br/>
-                Date of birth: 14 August 1994<br/>
-                Sex: Female
-              </div>
-              <div style={{ marginTop: 18, display:'flex', alignItems:'center', gap: 10 }}>
-                <div style={{ width: 34, height: 34, border:'1.5px solid var(--brand)', borderRadius: 999, display:'flex', alignItems:'center', justifyContent:'center', color:'var(--brand)', fontSize: 10 }}>V</div>
-                <div style={{ fontSize: 10, color:'var(--mute)', lineHeight: 1.4 }}>
-                  <div style={{ color:'var(--ink)' }}>Certificate of Translation Accuracy</div>
-                  Signed · 22 Apr 2026 · Vanan Services, Inc.
-                </div>
-              </div>
+          {/* Certified document photo */}
+          <div className="v-hero-doc" style={{ position:'relative', height:'clamp(340px, 42vw, 500px)', borderRadius:12, overflow:'hidden' }}>
+            <img
+              src="/images/certified-document.png"
+              alt="Certified translation document with official seal and notary stamp on a desk"
+              style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'center top', display:'block' }}
+            />
+            <div style={{ position:'absolute', bottom:20, left:20, right:20, display:'flex', alignItems:'center', gap:10, background:'rgba(11,30,63,0.72)', backdropFilter:'blur(8px)', WebkitBackdropFilter:'blur(8px)', padding:'10px 14px', borderRadius:8 }}>
+              <span className="v-dot" />
+              <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, letterSpacing:'0.06em', textTransform:'uppercase', color:'rgba(255,255,255,0.85)' }}>Certified · USCIS-accepted · ATA-signed</span>
             </div>
           </div>
         </div>
@@ -223,20 +171,16 @@ function VHome() {
       </section>
 
       {/* ── Slot 02: Editorial break ──────────────────────── */}
-      {/* TODO: Replace with <Image src="/photos/translator-at-work.jpg" /> when photography is delivered */}
       <section style={{ padding:'0 40px', background:'#fff', borderBottom:'1px solid var(--line)' }}>
         <div style={{ maxWidth:1200, margin:'0 auto', paddingBottom:56 }}>
           <Reveal>
-            <ImagePlaceholder
-              treatment="paper"
-              aspect="21:9"
-              label="PHOTO — translator at work, hands on document, warm natural light"
-              number="02"
-              centerIcon="image"
-              centerLabel="editorial"
-              ariaLabel="Placeholder: editorial — translator at work, hands on document, warm natural light"
-              style={{ border:'1px solid rgba(26,24,21,0.1)', borderRadius:12 }}
-            />
+            <div style={{ borderRadius:12, overflow:'hidden', border:'1px solid rgba(26,24,21,0.08)', aspectRatio:'21 / 9' }}>
+              <img
+                src="/images/editorial-translator.png"
+                alt="Translator working hands-on with annotated documents in warm natural light"
+                style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'center 30%', display:'block' }}
+              />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -298,17 +242,13 @@ function VHome() {
               <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-end', gap:16 }}>
                 <a href="#" style={{ color:'var(--ink)', fontSize: 14, textDecoration:'none', borderBottom:'1px solid var(--line)', paddingBottom: 2 }}>Read the full workflow →</a>
                 {/* Slot 03 — atmospheric process detail */}
-                {/* TODO: Replace with <Image src="/photos/process-hand.jpg" /> when photography is delivered */}
-                <ImagePlaceholder
-                  treatment="warm"
-                  aspect="4:3"
-                  label="PHOTO — hand over document, moody light"
-                  number="03"
-                  centerIcon="camera"
-                  centerLabel="Atmospheric"
-                  ariaLabel="Placeholder: atmospheric detail, hand over document, moody light"
-                  style={{ width:220, border:'1px solid rgba(245,241,234,0.1)', borderRadius:8 }}
-                />
+                <div style={{ width:220, borderRadius:8, overflow:'hidden', aspectRatio:'4 / 3' }}>
+                  <img
+                    src="/images/atmospheric-signing.png"
+                    alt="Hand signing a certified translation document with a pen, dramatic lighting"
+                    style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'center', display:'block' }}
+                  />
+                </div>
               </div>
             </div>
           </Reveal>
