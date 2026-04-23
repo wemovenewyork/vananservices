@@ -7,7 +7,7 @@ function LangInterstitial() {
   const words2 = [...row2, ...row2];
   const wordStyle = (italic) => ({
     fontFamily: 'Fraunces, serif',
-    fontSize: 'clamp(1.8rem, 3.5vw, 3.2rem)',
+    fontSize: 'clamp(0.9rem, 1.75vw, 1.6rem)',
     fontWeight: 300,
     fontVariationSettings: "'SOFT' 100, 'opsz' 144",
     letterSpacing: '-0.02em',
@@ -17,36 +17,36 @@ function LangInterstitial() {
     fontStyle: italic ? 'italic' : 'normal',
   });
   return (
-    <section style={{ background:'#1A1815', overflow:'hidden', padding:'36px 0', position:'relative' }}>
+    <section style={{ background:'#1A1815', overflow:'hidden', padding:'18px 0', position:'relative' }}>
       {/* Eyebrow labels */}
       <div style={{ position:'absolute', top:24, left:40, fontFamily:"'JetBrains Mono',monospace", fontSize:11, letterSpacing:'0.08em', textTransform:'uppercase', color:'rgba(245,241,234,0.4)', zIndex:20 }}>04 — 100+ languages</div>
       <div style={{ position:'absolute', top:24, right:40, fontFamily:"'JetBrains Mono',monospace", fontSize:11, letterSpacing:'0.08em', textTransform:'uppercase', color:'rgba(245,241,234,0.4)', zIndex:20 }}>Interstitial</div>
 
       {/* Top fade */}
-      <div style={{ position:'absolute', top:0, left:0, right:0, height:40, background:'linear-gradient(to bottom, #1A1815, transparent)', zIndex:10, pointerEvents:'none' }} />
+      <div style={{ position:'absolute', top:0, left:0, right:0, height:20, background:'linear-gradient(to bottom, #1A1815, transparent)', zIndex:10, pointerEvents:'none' }} />
 
       {/* Row 1 — scrolls left */}
-      <div style={{ overflow:'hidden', marginBottom:12 }}>
-        <div style={{ display:'flex', gap:64, animation:'langScroll 60s linear infinite', willChange:'transform' }}>
+      <div style={{ overflow:'hidden', marginBottom:6 }}>
+        <div style={{ display:'flex', gap:40, animation:'langScroll 18s linear infinite', willChange:'transform' }}>
           {words1.map((w, i) => <span key={i} style={wordStyle(false)}>{w}</span>)}
         </div>
       </div>
 
       {/* Row 2 — scrolls right, dimmer, italic */}
       <div style={{ overflow:'hidden' }}>
-        <div style={{ display:'flex', gap:64, animation:'langScroll 70s linear infinite reverse', willChange:'transform', opacity:0.4 }}>
+        <div style={{ display:'flex', gap:40, animation:'langScroll 22s linear infinite reverse', willChange:'transform', opacity:0.4 }}>
           {words2.map((w, i) => <span key={i} style={wordStyle(true)}>{w}</span>)}
         </div>
       </div>
 
       {/* Bottom fade */}
-      <div style={{ position:'absolute', bottom:0, left:0, right:0, height:40, background:'linear-gradient(to top, #1A1815, transparent)', zIndex:10, pointerEvents:'none' }} />
+      <div style={{ position:'absolute', bottom:0, left:0, right:0, height:20, background:'linear-gradient(to top, #1A1815, transparent)', zIndex:10, pointerEvents:'none' }} />
 
       {/* Center overlay badge */}
       <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', zIndex:20, pointerEvents:'none' }}>
-        <div style={{ background:'rgba(26,24,21,0.8)', backdropFilter:'blur(8px)', WebkitBackdropFilter:'blur(8px)', border:'1px solid rgba(245,241,234,0.1)', padding:'12px 28px', borderRadius:999, textAlign:'center' }}>
-          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, letterSpacing:'0.3em', textTransform:'uppercase', color:'#C8541C', marginBottom:3 }}>One hundred</div>
-          <div style={{ fontFamily:'Fraunces', fontStyle:'italic', fontWeight:300, fontVariationSettings:"'SOFT' 100", fontSize:'clamp(1rem, 2vw, 1.35rem)', color:'#F5F1EA', lineHeight:1.2 }}>and counting.</div>
+        <div style={{ background:'rgba(26,24,21,0.8)', backdropFilter:'blur(8px)', WebkitBackdropFilter:'blur(8px)', border:'1px solid rgba(245,241,234,0.1)', padding:'8px 20px', borderRadius:999, textAlign:'center' }}>
+          <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, letterSpacing:'0.3em', textTransform:'uppercase', color:'#C8541C', marginBottom:2 }}>One hundred</div>
+          <div style={{ fontFamily:'Fraunces', fontStyle:'italic', fontWeight:300, fontVariationSettings:"'SOFT' 100", fontSize:'clamp(0.75rem, 1.2vw, 1rem)', color:'#F5F1EA', lineHeight:1.2 }}>and counting.</div>
         </div>
       </div>
     </section>
